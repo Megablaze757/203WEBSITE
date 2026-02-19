@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>203 Carpentry | Premium Bespoke Joinery</title>
+    <title>203 Carpentry | Bespoke Joinery in Sussex</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
@@ -73,6 +73,7 @@
         img {
             max-width: 100%;
             height: auto;
+            display: block;
         }
 
         .btn {
@@ -357,7 +358,7 @@
             justify-content: center;
             text-align: center;
             color: white;
-            background: linear-gradient(rgba(10, 37, 64, 0.7), rgba(10, 37, 64, 0.5)), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1970&q=80');
+            background: linear-gradient(rgba(10, 37, 64, 0.7), rgba(10, 37, 64, 0.5)), url('IMG_9663.jpeg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -379,6 +380,7 @@
             font-weight: 500;
             line-height: 1.1;
             letter-spacing: -0.03em;
+            color: white;
         }
 
         .hero p {
@@ -391,6 +393,7 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .hero .btn {
@@ -418,6 +421,7 @@
             color: white;
             opacity: 0.7;
             transition: var(--transition);
+            cursor: pointer;
         }
 
         .scroll-indicator:hover {
@@ -828,6 +832,12 @@
             color: rgba(255, 255, 255, 0.6);
         }
 
+        /* Gallery Page Link */
+        .gallery-link {
+            display: inline-block;
+            margin-top: 20px;
+        }
+
         /* Responsive Styles */
         @media (max-width: 1200px) {
             .hero h1 {
@@ -961,7 +971,7 @@
         <div class="sticky-social-container">
             <div class="sticky-social-text">
                 <h4>Follow Our Work</h4>
-                <p>Stay updated with our latest projects on social media</p>
+                <p>See our latest projects on Instagram</p>
             </div>
             <div class="sticky-social-icons">
                 <a href="https://www.instagram.com/203_carpentry/" target="_blank" title="Instagram">
@@ -986,7 +996,7 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="#" class="logo">203<span>Carpentry</span></a>
+            <a href="index.html" class="logo">203<span>Carpentry</span></a>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -996,6 +1006,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -1005,9 +1016,8 @@
     <!-- Luxury Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Exquisite Bespoke Joinery</h1>
-            <p>Transforming spaces with custom-crafted woodwork that combines timeless elegance with modern
-                functionality.</p>
+            <h1>Bespoke Joinery in Sussex</h1>
+            <p>Transforming spaces with custom-crafted woodwork that combines timeless elegance with modern functionality.</p>
             <a href="#contact" class="btn">Start Your Project</a>
             <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-secondary">View Our Latest
                 Work</a>
@@ -1023,34 +1033,28 @@
         <div class="container">
             <div class="section-title">
                 <h2>About Us</h2>
-                <p>With decades of experience, we create bespoke joinery that transforms spaces and stands the test of
-                    time.</p>
+                <p>Based in Sussex, we create bespoke joinery that transforms spaces with quality craftsmanship.</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Crafting Excellence Since 2015</h3>
-                    <p>At 203 Carpentry, we blend traditional craftsmanship with contemporary design to create
-                        exceptional woodwork that stands the test of time. Our skilled artisans take pride in every
-                        detail, ensuring each piece is not just furniture, but a work of art.</p>
-                    <p>With years of experience in custom joinery, we've built a reputation for quality, precision, and
-                        personalized service. Whether it's custom cabinetry, elegant staircases, or unique furniture
-                        pieces, we work closely with our clients to bring their vision to life.</p>
-                    <a href="#portfolio" class="btn">View Our Work</a>
+                    <h3>Crafting Excellence in Sussex</h3>
+                    <p>At 203 Carpentry, we blend traditional craftsmanship with contemporary design to create exceptional woodwork. Our skilled artisans take pride in every detail, ensuring each piece is not just furniture, but a work of art.</p>
+                    <p>Whether it's custom cabinetry, elegant staircases, or unique furniture pieces, we work closely with our clients throughout Sussex to bring their vision to life. See our work on <a href="https://www.instagram.com/203_carpentry/" target="_blank" style="color: var(--accent);">Instagram</a> for our latest projects.</p>
+                    <a href="gallery.html" class="btn">View Full Gallery</a>
 
                     <div class="about-stats">
                         <div class="stat-item">
-                            <div class="stat-number">8+</div>
-                            <div class="stat-text">Years Experience</div>
+                            <div class="stat-number">100+</div>
+                            <div class="stat-text">Projects Completed</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">250+</div>
-                            <div class="stat-text">Projects Completed</div>
+                            <div class="stat-number">100%</div>
+                            <div class="stat-text">Sussex Based</div>
                         </div>
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1601760561441-16420502c7e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-                        alt="Craftsman working on wood">
+                    <img src="IMG_0680.jpeg" alt="Craftsman working on wood">
                 </div>
             </div>
         </div>
@@ -1066,35 +1070,29 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-                            alt="Custom Cabinetry">
+                        <img src="IMG_8937.jpeg" alt="Custom Cabinetry">
                     </div>
                     <div class="service-content">
                         <h3>Custom Cabinetry</h3>
-                        <p>Tailor-made cabinets for kitchens, bathrooms, and living spaces that maximize functionality
-                            while enhancing your interior design.</p>
+                        <p>Tailor-made cabinets for kitchens, bathrooms, and living spaces that maximize functionality while enhancing your interior design.</p>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=869&q=80"
-                            alt="Staircases">
+                        <img src="IMG_0676.jpeg" alt="Staircases">
                     </div>
                     <div class="service-content">
                         <h3>Staircases</h3>
-                        <p>Elegant and structurally sound staircases that become the centerpiece of your home, crafted
-                            from the finest materials.</p>
+                        <p>Elegant and structurally sound staircases that become the centerpiece of your home, crafted from the finest materials.</p>
                     </div>
                 </div>
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1505798577917-a65157d3320a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-                            alt="Furniture">
+                        <img src="IMG_9275.jpeg" alt="Furniture">
                     </div>
                     <div class="service-content">
                         <h3>Custom Furniture</h3>
-                        <p>Unique furniture pieces designed specifically for your space, style, and needs, from dining
-                            tables to built-in shelving.</p>
+                        <p>Unique furniture pieces designed specifically for your space, style, and needs, from dining tables to built-in shelving.</p>
                     </div>
                 </div>
             </div>
@@ -1105,74 +1103,62 @@
     <section class="portfolio" id="portfolio">
         <div class="container">
             <div class="section-title">
-                <h2>Our Portfolio</h2>
-                <p>Explore our recent projects that showcase our craftsmanship and attention to detail.</p>
+                <h2>Our Recent Work</h2>
+                <p>Explore our latest projects showcasing our craftsmanship and attention to detail.</p>
             </div>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1758&q=80"
-                        alt="Kitchen Project">
+                    <img src="IMG_9663.jpeg" alt="Kitchen Project">
                     <div class="portfolio-overlay">
-                        <h3>Modern Kitchen</h3>
-                        <p>Custom walnut cabinetry with integrated appliances</p>
-                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline">View
-                            Project</a>
+                        <h3>Custom Kitchen</h3>
+                        <p>Bespoke cabinetry and joinery</p>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline">View on Instagram</a>
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1513506003903-7c5f6d9015ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-                        alt="Library Project">
+                    <img src="IMG_8958.jpeg" alt="Staircase Project">
+                    <div class="portfolio-overlay">
+                        <h3>Oak Staircase</h3>
+                        <p>Custom designed and crafted</p>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline">View on Instagram</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="IMG_8932.jpeg" alt="Library Project">
                     <div class="portfolio-overlay">
                         <h3>Home Library</h3>
-                        <p>Floor-to-ceiling oak shelving with integrated lighting</p>
-                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline">View
-                            Project</a>
+                        <p>Floor-to-ceiling bespoke shelving</p>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline">View on Instagram</a>
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1618220179428-22790b461013?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=927&q=80"
-                        alt="Staircase Project">
-                    <div class="portfolio-overlay">
-                        <h3>Floating Staircase</h3>
-                        <p>Minimalist design with glass panels and oak treads</p>
-                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline">View
-                            Project</a>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80"
-                        alt="Wardrobe Project">
+                    <img src="IMG_9277.jpeg" alt="Wardrobe Project">
                     <div class="portfolio-overlay">
                         <h3>Custom Wardrobe</h3>
-                        <p>Walk-in closet with custom storage solutions</p>
-                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline">View
-                            Project</a>
+                        <p>Built-in storage solutions</p>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline">View on Instagram</a>
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=853&q=80"
-                        alt="Office Project">
+                    <img src="IMG_0659.jpeg" alt="Office Project">
                     <div class="portfolio-overlay">
-                        <h3>Executive Office</h3>
-                        <p>Custom built-in desk and shelving unit</p>
-                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline">View
-                            Project</a>
+                        <h3>Home Office</h3>
+                        <p>Custom desk and shelving</p>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline">View on Instagram</a>
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1600566753052-d7e3b1f4c8c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-                        alt="Bathroom Project">
+                    <img src="IMG_0714.jpeg" alt="Bathroom Project">
                     <div class="portfolio-overlay">
-                        <h3>Luxury Bathroom</h3>
-                        <p>Vanity unit with marble countertop</p>
-                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline">View
-                            Project</a>
+                        <h3>Bathroom Vanity</h3>
+                        <p>Custom joinery and storage</p>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline">View on Instagram</a>
                     </div>
                 </div>
             </div>
             <div class="portfolio-btn">
-                <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-secondary">View More
-                    on Instagram</a>
+                <a href="gallery.html" class="btn btn-secondary">View Full Gallery</a>
+                <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn" style="margin-left: 15px;">Follow on Instagram</a>
             </div>
         </div>
     </section>
@@ -1182,32 +1168,32 @@
         <div class="container">
             <div class="section-title">
                 <h2>Contact Us</h2>
-                <p>Ready to start your bespoke joinery project? Get in touch with us today.</p>
+                <p>Ready to start your bespoke joinery project in Sussex? Get in touch with us today.</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>Get In Touch</h3>
-                    <p>Contact us to discuss your project requirements and schedule a consultation with our team.</p>
+                    <p>Contact us to discuss your project requirements and schedule a consultation.</p>
                     <div class="contact-details">
                         <div class="contact-detail">
                             <i class="fas fa-map-marker-alt"></i>
                             <div class="contact-detail-content">
                                 <h4>Our Location</h4>
-                                <p>Al Quoz Industrial Area, Dubai, UAE</p>
-                            </div>
-                        </div>
-                        <div class="contact-detail">
-                            <i class="fas fa-phone"></i>
-                            <div class="contact-detail-content">
-                                <h4>Phone Number</h4>
-                                <p>+971 4 123 4567</p>
+                                <p>Sussex, United Kingdom</p>
                             </div>
                         </div>
                         <div class="contact-detail">
                             <i class="fas fa-envelope"></i>
                             <div class="contact-detail-content">
                                 <h4>Email Address</h4>
-                                <p>info@203carpentry.ae</p>
+                                <p>info@203carpentry.co.uk</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fab fa-instagram"></i>
+                            <div class="contact-detail-content">
+                                <h4>Follow Us</h4>
+                                <p>@203_carpentry</p>
                             </div>
                         </div>
                     </div>
@@ -1244,10 +1230,9 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>203 Carpentry</h3>
-                    <p>Creating exceptional custom woodwork that transforms spaces and stands the test of time.</p>
+                    <p>Creating exceptional custom woodwork in Sussex that transforms spaces.</p>
                     <div class="social-links">
-                        <a href="https://www.instagram.com/203_carpentry/" target="_blank"><i
-                                class="fab fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#"><i class="fab fa-pinterest-p"></i></a>
@@ -1260,6 +1245,7 @@
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -1276,15 +1262,14 @@
                 <div class="footer-column">
                     <h3>Contact Info</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> Al Quoz Industrial Area, Dubai</li>
-                        <li><i class="fas fa-phone"></i> +971 4 123 4567</li>
-                        <li><i class="fas fa-envelope"></i> info@203carpentry.ae</li>
-                        <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Sussex, United Kingdom</li>
+                        <li><i class="fas fa-envelope"></i> info@203carpentry.co.uk</li>
+                        <li><i class="fab fa-instagram"></i> @203_carpentry</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 203 Carpentry. All Rights Reserved.</p>
+                <p>&copy; 2024 203 Carpentry. Based in Sussex. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -1356,8 +1341,6 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     stickySocialBar.classList.remove('visible');
-                } else {
-                    stickySocialBar.classList.add('visible');
                 }
             });
         }, {
