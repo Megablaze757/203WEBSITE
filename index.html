@@ -13,29 +13,18 @@
         /* Base Styles - Luxury Design */
         :root {
             --primary: #0A2540;
-            /* Deep navy blue */
             --secondary: #9E2A2B;
-            /* Rich burgundy */
             --accent: #C5A572;
-            /* Warm gold */
             --light: #FFFFFF;
-            /* White */
             --dark: #1A1A1A;
-            /* Near black */
             --text: #4A4A4A;
-            /* Medium gray for text */
             --light-bg: #F8F7F4;
-            /* Warm off-white */
             --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -46,12 +35,7 @@
             overflow-x: hidden;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
+        h1, h2, h3, h4, h5, h6 {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 500;
             line-height: 1.2;
@@ -59,22 +43,10 @@
             letter-spacing: -0.02em;
         }
 
-        .container {
-            width: 90%;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .container { width: 90%; max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+        .container-narrow { max-width: 1200px; }
 
-        .container-narrow {
-            max-width: 1200px;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
+        img { max-width: 100%; height: auto; display: block; }
 
         .btn {
             display: inline-flex;
@@ -99,53 +71,24 @@
         .btn::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             transition: var(--transition);
         }
 
-        .btn:hover::before {
-            left: 100%;
-        }
+        .btn:hover::before { left: 100%; }
+        .btn:hover { background-color: var(--secondary); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
 
-        .btn:hover {
-            background-color: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
-        }
+        .btn-secondary { background-color: var(--accent); color: var(--primary); }
+        .btn-secondary:hover { background-color: var(--secondary); color: white; }
 
-        .btn-secondary {
-            background-color: var(--accent);
-            color: var(--primary);
-        }
+        .btn-outline { background-color: transparent; border: 1px solid var(--primary); color: var(--primary); }
+        .btn-outline:hover { background-color: var(--primary); color: white; }
 
-        .btn-secondary:hover {
-            background-color: var(--secondary);
-            color: white;
-        }
+        section { padding: 100px 0; }
 
-        .btn-outline {
-            background-color: transparent;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 70px;
-        }
+        .section-title { text-align: center; margin-bottom: 70px; }
 
         .section-title h2 {
             font-size: 3.5rem;
@@ -159,41 +102,30 @@
         .section-title h2::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 50%;
+            bottom: 0; left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 2px;
+            width: 80px; height: 2px;
             background-color: var(--accent);
         }
 
-        .section-title p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            color: var(--text);
-            font-weight: 300;
-        }
+        .section-title p { font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: var(--text); font-weight: 300; }
 
         /* Sticky Social Media Bar */
         .sticky-social-bar {
             position: fixed;
-            bottom: 0;
-            left: 0;
+            bottom: 0; left: 0;
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
             z-index: 998;
             padding: 15px 0;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            border-top: 1px solid rgba(0,0,0,0.05);
             transition: var(--transition);
             transform: translateY(100%);
         }
 
-        .sticky-social-bar.visible {
-            transform: translateY(0);
-        }
+        .sticky-social-bar.visible { transform: translateY(0); }
 
         .sticky-social-container {
             display: flex;
@@ -204,36 +136,17 @@
             padding: 0 20px;
         }
 
-        .sticky-social-text {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+        .sticky-social-text { display: flex; align-items: center; gap: 15px; }
+        .sticky-social-text h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--primary); margin: 0; }
+        .sticky-social-text p { font-size: 0.9rem; color: var(--text); margin: 0; }
 
-        .sticky-social-text h4 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin: 0;
-        }
-
-        .sticky-social-text p {
-            font-size: 0.9rem;
-            color: var(--text);
-            margin: 0;
-        }
-
-        .sticky-social-icons {
-            display: flex;
-            gap: 15px;
-        }
+        .sticky-social-icons { display: flex; gap: 15px; }
 
         .sticky-social-icons a {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 40px;
-            height: 40px;
+            width: 40px; height: 40px;
             background-color: var(--primary);
             border-radius: 50%;
             color: white;
@@ -241,10 +154,7 @@
             transition: var(--transition);
         }
 
-        .sticky-social-icons a:hover {
-            background-color: var(--secondary);
-            transform: translateY(-3px);
-        }
+        .sticky-social-icons a:hover { background-color: var(--secondary); transform: translateY(-3px); }
 
         .sticky-social-close {
             background: none;
@@ -255,29 +165,24 @@
             transition: var(--transition);
             padding: 5px;
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            width: 30px; height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .sticky-social-close:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-            color: var(--primary);
-        }
+        .sticky-social-close:hover { background-color: rgba(0,0,0,0.05); color: var(--primary); }
 
-        /* Header Styles */
+        /* Header */
         header {
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             position: fixed;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             width: 100%;
             z-index: 1000;
             transition: var(--transition);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
         .header-container {
@@ -296,18 +201,10 @@
             letter-spacing: -0.02em;
         }
 
-        .logo span {
-            color: var(--accent);
-        }
+        .logo span { color: var(--accent); }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 40px;
-        }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 40px; }
 
         nav ul li a {
             text-decoration: none;
@@ -323,32 +220,18 @@
         nav ul li a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 1px;
+            bottom: -5px; left: 0;
+            width: 0; height: 1px;
             background-color: var(--accent);
             transition: var(--transition);
         }
 
-        nav ul li a:hover {
-            color: var(--accent);
-        }
+        nav ul li a:hover { color: var(--accent); }
+        nav ul li a:hover::after { width: 100%; }
 
-        nav ul li a:hover::after {
-            width: 100%;
-        }
+        .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
 
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--primary);
-        }
-
-        /* Luxury Hero Section */
+        /* Hero */
         .hero {
             position: relative;
             height: 100vh;
@@ -364,12 +247,7 @@
             background-attachment: fixed;
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            padding: 0 20px;
-        }
+        .hero-content { position: relative; z-index: 2; max-width: 900px; padding: 0 20px; }
 
         .hero h1 {
             font-size: 5rem;
@@ -393,7 +271,7 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255,255,255,0.9);
         }
 
         .hero .btn {
@@ -404,16 +282,12 @@
         }
 
         @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .scroll-indicator {
             position: absolute;
-            bottom: 40px;
-            left: 50%;
+            bottom: 40px; left: 50%;
             transform: translateX(-50%);
             display: flex;
             flex-direction: column;
@@ -424,86 +298,30 @@
             cursor: pointer;
         }
 
-        .scroll-indicator:hover {
-            opacity: 1;
-        }
-
-        .scroll-indicator span {
-            font-size: 0.8rem;
-            margin-bottom: 10px;
-            letter-spacing: 0.1em;
-        }
-
-        .scroll-indicator i {
-            font-size: 1.2rem;
-            animation: bounce 2s infinite;
-        }
+        .scroll-indicator:hover { opacity: 1; }
+        .scroll-indicator span { font-size: 0.8rem; margin-bottom: 10px; letter-spacing: 0.1em; }
+        .scroll-indicator i { font-size: 1.2rem; animation: bounce 2s infinite; }
 
         @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-
-            40% {
-                transform: translateY(-10px);
-            }
-
-            60% {
-                transform: translateY(-5px);
-            }
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
         }
 
-        /* About Section */
-        .about {
-            background-color: var(--light-bg);
-            position: relative;
-        }
+        /* About */
+        .about { background-color: var(--light-bg); position: relative; }
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
+        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 
-        .about-text h3 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: var(--primary);
-        }
+        .about-text h3 { font-size: 2.5rem; margin-bottom: 30px; color: var(--primary); }
+        .about-text p { margin-bottom: 25px; font-size: 1.1rem; line-height: 1.8; }
 
-        .about-text p {
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
+        .about-image { position: relative; }
 
-        .about-image {
-            position: relative;
-        }
+        .about-image img { border-radius: 5px; box-shadow: var(--shadow); transition: var(--transition); }
+        .about-image:hover img { transform: scale(1.02); box-shadow: var(--shadow-hover); }
 
-        .about-image img {
-            border-radius: 5px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .about-image:hover img {
-            transform: scale(1.02);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 50px;
-        }
+        .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 50px; }
 
         .stat-item {
             text-align: center;
@@ -514,37 +332,15 @@
             transition: var(--transition);
         }
 
-        .stat-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
+        .stat-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
 
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 300;
-            color: var(--accent);
-            margin-bottom: 10px;
-            font-family: 'Cormorant Garamond', serif;
-        }
+        .stat-number { font-size: 3rem; font-weight: 300; color: var(--accent); margin-bottom: 10px; font-family: 'Cormorant Garamond', serif; }
+        .stat-text { font-size: 1rem; color: var(--primary); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
 
-        .stat-text {
-            font-size: 1rem;
-            color: var(--primary);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+        /* Services */
+        .services { background-color: var(--light); }
 
-        /* Services Section */
-        .services {
-            background-color: var(--light);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
 
         .service-card {
             background-color: white;
@@ -558,55 +354,27 @@
         .service-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
+            top: 0; left: 0;
+            width: 100%; height: 5px;
             background: linear-gradient(90deg, var(--primary), var(--accent));
             transform: scaleX(0);
             transform-origin: left;
             transition: var(--transition);
         }
 
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-        }
+        .service-img { height: 250px; overflow: hidden; }
 
-        .service-img {
-            height: 250px;
-            overflow: hidden;
-        }
+        .service-img img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .service-card:hover .service-img img { transform: scale(1.1); }
 
-        .service-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
+        .service-content { padding: 30px; }
+        .service-content h3 { font-size: 1.8rem; margin-bottom: 15px; color: var(--primary); }
 
-        .service-card:hover .service-img img {
-            transform: scale(1.1);
-        }
-
-        .service-content {
-            padding: 30px;
-        }
-
-        .service-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            background-color: var(--light-bg);
-        }
+        /* Portfolio */
+        .portfolio { background-color: var(--light-bg); }
 
         .portfolio-grid {
             display: grid;
@@ -624,28 +392,15 @@
             transition: var(--transition);
         }
 
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
+        .portfolio-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
 
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.05);
-        }
+        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .portfolio-item:hover img { transform: scale(1.05); }
 
         .portfolio-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: rgba(10, 37, 64, 0.85);
             display: flex;
             flex-direction: column;
@@ -658,75 +413,28 @@
             color: white;
         }
 
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
 
-        .portfolio-overlay h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: white;
-        }
+        .portfolio-overlay h3 { font-size: 1.8rem; margin-bottom: 15px; color: white; }
+        .portfolio-overlay p { margin-bottom: 20px; }
 
-        .portfolio-overlay p {
-            margin-bottom: 20px;
-        }
+        .portfolio-btn { text-align: center; }
 
-        .portfolio-btn {
-            text-align: center;
-        }
+        /* Contact */
+        .contact { background-color: var(--light); }
 
-        /* Contact Section */
-        .contact {
-            background-color: var(--light);
-        }
+        .contact-content { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
 
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-        }
+        .contact-info h3, .contact-form h3 { font-size: 2.2rem; margin-bottom: 30px; color: var(--primary); }
 
-        .contact-info h3,
-        .contact-form h3 {
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-            color: var(--primary);
-        }
+        .contact-details { margin-bottom: 40px; }
 
-        .contact-details {
-            margin-bottom: 40px;
-        }
+        .contact-detail { display: flex; align-items: flex-start; margin-bottom: 25px; }
+        .contact-detail i { color: var(--accent); margin-right: 20px; font-size: 1.3rem; margin-top: 5px; }
+        .contact-detail-content h4 { font-size: 1.2rem; margin-bottom: 5px; color: var(--primary); }
 
-        .contact-detail {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-        }
-
-        .contact-detail i {
-            color: var(--accent);
-            margin-right: 20px;
-            font-size: 1.3rem;
-            margin-top: 5px;
-        }
-
-        .contact-detail-content h4 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            color: var(--primary);
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 500;
-            color: var(--primary);
-        }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 10px; font-weight: 500; color: var(--primary); }
 
         .form-control {
             width: 100%;
@@ -739,30 +447,13 @@
             background: white;
         }
 
-        .form-control:focus {
-            border-color: var(--accent);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(197, 165, 114, 0.2);
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
+        .form-control:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px rgba(197,165,114,0.2); }
+        textarea.form-control { min-height: 150px; resize: vertical; }
 
         /* Footer */
-        footer {
-            background-color: var(--primary);
-            color: white;
-            padding: 80px 0 30px;
-        }
+        footer { background-color: var(--primary); color: white; padding: 80px 0 30px; }
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 50px;
-            margin-bottom: 60px;
-        }
+        .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; margin-bottom: 60px; }
 
         .footer-column h3 {
             font-size: 1.5rem;
@@ -775,121 +466,60 @@
         .footer-column h3::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 2px;
+            bottom: 0; left: 0;
+            width: 50px; height: 2px;
             background-color: var(--accent);
         }
 
-        .footer-links {
-            list-style: none;
-        }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: var(--transition); }
+        .footer-links a:hover { color: var(--accent); padding-left: 5px; }
 
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-        }
+        .social-links { display: flex; gap: 15px; margin-top: 25px; }
 
         .social-links a {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px; height: 40px;
+            background-color: rgba(255,255,255,0.1);
             border-radius: 50%;
             color: white;
             transition: var(--transition);
         }
 
-        .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-3px);
-        }
+        .social-links a:hover { background-color: var(--accent); transform: translateY(-3px); }
 
         .copyright {
             text-align: center;
             padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255,255,255,0.6);
         }
 
-        /* Gallery Page Link */
-        .gallery-link {
-            display: inline-block;
-            margin-top: 20px;
-        }
-
-        /* Responsive Styles */
+        /* Responsive */
         @media (max-width: 1200px) {
-            .hero h1 {
-                font-size: 4rem;
-            }
-
-            .section-title h2 {
-                font-size: 3rem;
-            }
-
-            .about-content,
-            .contact-content {
-                gap: 50px;
-            }
+            .hero h1 { font-size: 4rem; }
+            .section-title h2 { font-size: 3rem; }
+            .about-content, .contact-content { gap: 50px; }
         }
 
         @media (max-width: 992px) {
-
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-                gap: 40px;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
-
-            .sticky-social-container {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
+            .about-content, .contact-content { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 3.5rem; }
+            .footer-content { grid-template-columns: 1fr 1fr; gap: 40px; }
+            .portfolio-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+            .sticky-social-container { flex-direction: column; gap: 15px; text-align: center; }
         }
 
         @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
+            .mobile-menu-btn { display: block; }
 
             nav ul {
                 position: fixed;
-                top: 90px;
-                left: 0;
+                top: 90px; left: 0;
                 width: 100%;
                 background-color: white;
                 flex-direction: column;
@@ -901,66 +531,23 @@
                 z-index: 999;
             }
 
-            nav ul.active {
-                transform: translateY(0);
-            }
-
-            nav ul li {
-                margin: 15px 0;
-            }
-
-            .hero {
-                padding: 120px 0;
-            }
-
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-
-            section {
-                padding: 80px 0;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-
-            .sticky-social-text {
-                flex-direction: column;
-                gap: 5px;
-            }
+            nav ul.active { transform: translateY(0); }
+            nav ul li { margin: 15px 0; }
+            .hero { padding: 120px 0; }
+            .hero h1 { font-size: 2.8rem; }
+            section { padding: 80px 0; }
+            .services-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
+            .sticky-social-text { flex-direction: column; gap: 5px; }
         }
 
         @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .section-title h2 {
-                font-size: 2.5rem;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero .btn {
-                display: block;
-                margin: 10px auto;
-                width: 80%;
-            }
-
-            .about-stats {
-                grid-template-columns: 1fr;
-            }
-
-            .sticky-social-bar {
-                padding: 10px 0;
-            }
+            .hero h1 { font-size: 2.2rem; }
+            .section-title h2 { font-size: 2.5rem; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .hero .btn { display: block; margin: 10px auto; width: 80%; }
+            .about-stats { grid-template-columns: 1fr; }
+            .sticky-social-bar { padding: 10px 0; }
         }
     </style>
 </head>
@@ -977,15 +564,9 @@
                 <a href="https://www.instagram.com/203_carpentry/" target="_blank" title="Instagram">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="#" title="Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" title="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="#" title="Pinterest">
-                    <i class="fab fa-pinterest-p"></i>
-                </a>
+                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
             </div>
             <button class="sticky-social-close" id="closeStickySocial" title="Close">
                 <i class="fas fa-times"></i>
@@ -997,9 +578,7 @@
     <header>
         <div class="container header-container">
             <a href="index.html" class="logo">203<span>Carpentry</span></a>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
@@ -1013,14 +592,13 @@
         </div>
     </header>
 
-    <!-- Luxury Hero Section -->
+    <!-- Hero -->
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Bespoke Joinery in Sussex</h1>
             <p>Transforming spaces with custom-crafted woodwork that combines timeless elegance with modern functionality.</p>
             <a href="#contact" class="btn">Start Your Project</a>
-            <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-secondary">View Our Latest
-                Work</a>
+            <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-secondary">View Our Latest Work</a>
         </div>
         <div class="scroll-indicator">
             <span>Scroll to Explore</span>
@@ -1028,7 +606,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About -->
     <section class="about" id="about">
         <div class="container">
             <div class="section-title">
@@ -1039,9 +617,8 @@
                 <div class="about-text">
                     <h3>Crafting Excellence in Sussex</h3>
                     <p>At 203 Carpentry, we blend traditional craftsmanship with contemporary design to create exceptional woodwork. Our skilled artisans take pride in every detail, ensuring each piece is not just furniture, but a work of art.</p>
-                    <p>Whether it's custom cabinetry, elegant staircases, or unique furniture pieces, we work closely with our clients throughout Sussex to bring their vision to life. See our work on <a href="https://www.instagram.com/203_carpentry/" target="_blank" style="color: var(--accent);">Instagram</a> for our latest projects.</p>
+                    <p>Whether it's custom cabinetry, elegant windows and doors, or bespoke bedroom furniture, we work closely with our clients throughout Sussex to bring their vision to life. See our work on <a href="https://www.instagram.com/203_carpentry/" target="_blank" style="color: var(--accent);">Instagram</a> for our latest projects.</p>
                     <a href="gallery.html" class="btn">View Full Gallery</a>
-
                     <div class="about-stats">
                         <div class="stat-item">
                             <div class="stat-number">100+</div>
@@ -1054,13 +631,14 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="IMG_0680.jpeg" alt="Craftsman working on wood">
+                    <!-- IMG_0680 not in uploaded set; using a confirmed available image -->
+                    <img src="IMG_9176.jpeg" alt="Bespoke media wall with herringbone oak floor">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services -->
     <section class="services" id="services">
         <div class="container container-narrow">
             <div class="section-title">
@@ -1068,38 +646,45 @@
                 <p>We offer a comprehensive range of bespoke joinery services tailored to your specific needs.</p>
             </div>
             <div class="services-grid">
+
+                <!-- Service 1: Cabinetry & Media Walls — IMG_8958 = large lit media wall -->
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="IMG_8937.jpeg" alt="Custom Cabinetry">
+                        <img src="IMG_8958.jpeg" alt="Bespoke built-in media wall with LED shelving">
                     </div>
                     <div class="service-content">
-                        <h3>Custom Cabinetry</h3>
-                        <p>Tailor-made cabinets for kitchens, bathrooms, and living spaces that maximize functionality while enhancing your interior design.</p>
+                        <h3>Built-in Cabinetry & Media Walls</h3>
+                        <p>Floor-to-ceiling bespoke units with integrated lighting, panelled doors and oak shelving — designed to make a statement in any living space.</p>
                     </div>
                 </div>
+
+                <!-- Service 2: Bathrooms — IMG_9280 = attic bathroom, clean finished shot -->
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="IMG_0676.jpeg" alt="Staircases">
+                        <img src="IMG_9280.jpeg" alt="Attic bathroom with bespoke panelling and clawfoot bath">
                     </div>
                     <div class="service-content">
-                        <h3>Staircases</h3>
-                        <p>Elegant and structurally sound staircases that become the centerpiece of your home, crafted from the finest materials.</p>
+                        <h3>Bathroom Joinery & Panelling</h3>
+                        <p>Bespoke wall panelling, wainscoting and fitted joinery that bring character and craftsmanship to bathrooms of every style.</p>
                     </div>
                 </div>
+
+                <!-- Service 3: Doors & Windows — IMG_0659 = sash bay window -->
                 <div class="service-card">
                     <div class="service-img">
-                        <img src="IMG_9275.jpeg" alt="Furniture">
+                        <img src="IMG_0659.jpeg" alt="Bespoke timber sash bay window">
                     </div>
                     <div class="service-content">
-                        <h3>Custom Furniture</h3>
-                        <p>Unique furniture pieces designed specifically for your space, style, and needs, from dining tables to built-in shelving.</p>
+                        <h3>Doors & Windows</h3>
+                        <p>Handcrafted timber sash windows, bay window surrounds and bespoke doors that honour period architecture while meeting modern standards.</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
+    <!-- Portfolio -->
     <section class="portfolio" id="portfolio">
         <div class="container">
             <div class="section-title">
@@ -1107,54 +692,67 @@
                 <p>Explore our latest projects showcasing our craftsmanship and attention to detail.</p>
             </div>
             <div class="portfolio-grid">
+
+                <!-- IMG_8958: Media wall with LED lighting -->
                 <div class="portfolio-item">
-                    <img src="IMG_9663.jpeg" alt="Kitchen Project">
+                    <img src="IMG_8958.jpeg" alt="Bespoke Media Wall with LED Shelving">
                     <div class="portfolio-overlay">
-                        <h3>Custom Kitchen</h3>
-                        <p>Bespoke cabinetry and joinery</p>
+                        <h3>Bespoke Media Wall</h3>
+                        <p>Full-width built-in unit with LED-lit shelving & panelled cabinets</p>
                         <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline">View on Instagram</a>
                     </div>
                 </div>
+
+                <!-- IMG_9280: Attic bathroom finished -->
                 <div class="portfolio-item">
-                    <img src="IMG_8958.jpeg" alt="Staircase Project">
+                    <img src="IMG_9280.jpeg" alt="Attic Bathroom with Clawfoot Bath and Panelling">
                     <div class="portfolio-overlay">
-                        <h3>Oak Staircase</h3>
-                        <p>Custom designed and crafted</p>
+                        <h3>Attic Bathroom</h3>
+                        <p>Bespoke wall panelling, clawfoot bath & Velux skylight</p>
                         <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline">View on Instagram</a>
                     </div>
                 </div>
+
+                <!-- IMG_0714: Heritage bathroom with arched shower -->
                 <div class="portfolio-item">
-                    <img src="IMG_8932.jpeg" alt="Library Project">
+                    <img src="IMG_0714.jpeg" alt="Heritage Bathroom with Arched Tiled Shower">
                     <div class="portfolio-overlay">
-                        <h3>Home Library</h3>
-                        <p>Floor-to-ceiling bespoke shelving</p>
+                        <h3>Heritage Bathroom</h3>
+                        <p>Tongue & groove panelling with gold-trimmed arched shower enclosure</p>
                         <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline">View on Instagram</a>
                     </div>
                 </div>
+
+                <!-- IMG_1347: Bedroom wardrobes flanking fireplace -->
                 <div class="portfolio-item">
-                    <img src="IMG_9277.jpeg" alt="Wardrobe Project">
+                    <img src="IMG_1347.jpeg" alt="Bespoke Dark Bedroom Wardrobes">
                     <div class="portfolio-overlay">
-                        <h3>Custom Wardrobe</h3>
-                        <p>Built-in storage solutions</p>
+                        <h3>Bespoke Bedroom Wardrobes</h3>
+                        <p>Dark-painted freestanding wardrobes flanking a period fireplace</p>
                         <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline">View on Instagram</a>
                     </div>
                 </div>
+
+                <!-- IMG_0659: Sash bay window -->
                 <div class="portfolio-item">
-                    <img src="IMG_0659.jpeg" alt="Office Project">
+                    <img src="IMG_0659.jpeg" alt="Bespoke Timber Sash Bay Window">
                     <div class="portfolio-overlay">
-                        <h3>Home Office</h3>
-                        <p>Custom desk and shelving</p>
+                        <h3>Bespoke Sash Bay Window</h3>
+                        <p>Handcrafted timber sash windows with glazing bars in a period bay</p>
                         <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline">View on Instagram</a>
                     </div>
                 </div>
+
+                <!-- ADAEB7DB: Alcove TV unit with oak shelves -->
                 <div class="portfolio-item">
-                    <img src="IMG_0714.jpeg" alt="Bathroom Project">
+                    <img src="ADAEB7DB-8D0A-458F-A250-CF7D9DE23A45.jpeg" alt="Built-in Alcove TV Unit with Oak Shelving">
                     <div class="portfolio-overlay">
-                        <h3>Bathroom Vanity</h3>
-                        <p>Custom joinery and storage</p>
+                        <h3>Alcove TV Unit</h3>
+                        <p>Built-in media unit with solid oak shelving & painted panelled cabinets</p>
                         <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline">View on Instagram</a>
                     </div>
                 </div>
+
             </div>
             <div class="portfolio-btn">
                 <a href="gallery.html" class="btn btn-secondary">View Full Gallery</a>
@@ -1163,7 +761,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
@@ -1252,11 +850,11 @@
                 <div class="footer-column">
                     <h3>Our Services</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Custom Cabinetry</a></li>
-                        <li><a href="#">Staircases</a></li>
-                        <li><a href="#">Furniture</a></li>
+                        <li><a href="#">Built-in Cabinetry</a></li>
+                        <li><a href="#">Media Walls</a></li>
+                        <li><a href="#">Bathroom Panelling</a></li>
                         <li><a href="#">Doors & Windows</a></li>
-                        <li><a href="#">Commercial Joinery</a></li>
+                        <li><a href="#">Bedroom Furniture</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -1275,41 +873,26 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navMenu = document.querySelector('nav ul');
+        mobileMenuBtn.addEventListener('click', () => navMenu.classList.toggle('active'));
 
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => navMenu.classList.remove('active'));
         });
 
-        // Close mobile menu when clicking on a link
-        const navLinks = document.querySelectorAll('nav ul li a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-            });
-        });
-
-        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
+                    window.scrollTo({ top: targetElement.offsetTop - 100, behavior: 'smooth' });
                 }
             });
         });
 
-        // Header scroll effect
         window.addEventListener('scroll', function () {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
@@ -1321,43 +904,23 @@
             }
         });
 
-        // Sticky Social Bar Functionality
         const stickySocialBar = document.getElementById('stickySocialBar');
         const closeStickySocial = document.getElementById('closeStickySocial');
 
-        // Show sticky social bar after a delay
-        setTimeout(() => {
-            stickySocialBar.classList.add('visible');
-        }, 3000);
+        setTimeout(() => stickySocialBar.classList.add('visible'), 3000);
+        closeStickySocial.addEventListener('click', () => stickySocialBar.classList.remove('visible'));
 
-        // Close sticky social bar
-        closeStickySocial.addEventListener('click', () => {
-            stickySocialBar.classList.remove('visible');
-        });
-
-        // Hide sticky social bar when user reaches footer
         const footer = document.querySelector('footer');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    stickySocialBar.classList.remove('visible');
-                }
+                if (entry.isIntersecting) stickySocialBar.classList.remove('visible');
             });
-        }, {
-            threshold: 0.1
-        });
-
+        }, { threshold: 0.1 });
         observer.observe(footer);
 
-        // Add scroll indicator functionality
-        const scrollIndicator = document.querySelector('.scroll-indicator');
-        scrollIndicator.addEventListener('click', () => {
-            window.scrollTo({
-                top: document.getElementById('about').offsetTop - 100,
-                behavior: 'smooth'
-            });
+        document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            window.scrollTo({ top: document.getElementById('about').offsetTop - 100, behavior: 'smooth' });
         });
     </script>
 </body>
-
 </html>
