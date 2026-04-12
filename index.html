@@ -217,12 +217,13 @@
         .logo img {
             height: 44px;
             width: auto;
-            transition: var(--transition-fast);
+            transition: opacity 0.3s ease;
         }
 
-        header:not(.scrolled) .logo img {
-            filter: brightness(0) invert(1);
-        }
+        .logo .logo-white { display: none; }
+
+        header:not(.scrolled) .logo .logo-dark { display: none; }
+        header:not(.scrolled) .logo .logo-white { display: block; }
 
         header:not(.scrolled) nav ul li a { color: rgba(255,255,255,0.85); }
         header:not(.scrolled) nav ul li a:hover { color: var(--accent-light); }
@@ -906,7 +907,10 @@
     <!-- Header -->
     <header id="mainHeader">
         <div class="container header-container">
-            <a href="index.html" class="logo"><img src="logo.png" alt="203 Carpentry &amp; Joinery"></a>
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="203 Carpentry &amp; Joinery" class="logo-dark">
+                <img src="logo-white.png" alt="203 Carpentry &amp; Joinery" class="logo-white">
+            </a>
             <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle menu">
                 <i class="fas fa-bars" id="menuIcon"></i>
             </button>
@@ -1126,7 +1130,7 @@
                         <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
                         <div>
                             <h4>Email</h4>
-                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="87eee9e1e8c7b5b7b4e4e6f5f7e2e9f3f5fea9e4e8a9f2ec">[email&#160;protected]</a></p>
+                            <p>info@203carpentry.co.uk</p>
                         </div>
                     </div>
                     <div class="contact-detail">
@@ -1179,7 +1183,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <img src="logo.png" alt="203 Carpentry &amp; Joinery" style="height:40px;width:auto;filter:brightness(0) invert(1);margin-bottom:16px;">
+                    <img src="logo-white.png" alt="203 Carpentry &amp; Joinery" style="height:40px;width:auto;margin-bottom:16px;">
                     <p>Bespoke joinery and custom woodwork crafted in Sussex.</p>
                     <div class="footer-social">
                         <a href="https://www.instagram.com/203_carpentry/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1222,7 +1226,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // ─── HEADER SCROLL ───
         const header = document.getElementById('mainHeader');
         window.addEventListener('scroll', () => {
