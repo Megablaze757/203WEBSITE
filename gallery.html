@@ -4,67 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery | 203 Carpentry — Bespoke Joinery in Sussex</title>
-    <meta name="description" content="Browse our gallery of bespoke joinery projects in Sussex — media walls, bathroom panelling, fitted wardrobes, sash windows and more.">
-    <link rel="canonical" href="https://203carpentry.co.uk/gallery.html">
-
-    <meta property="og:title" content="Gallery | 203 Carpentry">
-    <meta property="og:description" content="Browse our gallery of bespoke joinery projects across Sussex.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://203carpentry.co.uk/gallery.html">
-
+    <title>Gallery | 203 Carpentry - Bespoke Joinery in Sussex</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --primary: #0C1F2C;
-            --secondary: #8B2B2B;
-            --accent: #B89B5E;
-            --accent-light: #D4BA82;
-            --light: #FAFAF8;
-            --dark: #111;
-            --text: #525252;
-            --text-light: #888;
-            --cream: #F3F1EC;
-            --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --transition-fast: all 0.3s ease;
-            --shadow: 0 8px 32px rgba(0,0,0,0.06);
-            --shadow-hover: 0 16px 48px rgba(0,0,0,0.12);
-            --radius: 4px;
+            --primary: #0A2540;
+            --secondary: #9E2A2B;
+            --accent: #C5A572;
+            --light: #FFFFFF;
+            --dark: #1A1A1A;
+            --text: #4A4A4A;
+            --light-bg: #F8F7F4;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Outfit', sans-serif;
-            line-height: 1.75;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
             color: var(--text);
             background-color: var(--light);
             font-weight: 400;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-            opacity: 0.025;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'DM Serif Display', serif;
-            font-weight: 400;
-            line-height: 1.15;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            line-height: 1.2;
             color: var(--primary);
-            letter-spacing: -0.01em;
+            letter-spacing: -0.02em;
         }
 
         .container { width: 90%; max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+
         img { max-width: 100%; height: auto; display: block; }
 
         .btn {
@@ -73,46 +52,52 @@
             gap: 10px;
             background-color: var(--primary);
             color: white;
-            padding: 15px 30px;
-            border: 2px solid var(--primary);
+            padding: 16px 32px;
+            border: none;
+            border-radius: 0;
             cursor: pointer;
             font-weight: 500;
             text-decoration: none;
             transition: var(--transition);
-            font-size: 0.85rem;
-            letter-spacing: 0.08em;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
             text-transform: uppercase;
-            font-family: 'Outfit', sans-serif;
+            position: relative;
+            overflow: hidden;
         }
-        .btn:hover { background-color: transparent; color: var(--primary); transform: translateY(-2px); }
 
-        .btn-accent { background-color: var(--accent); border-color: var(--accent); color: var(--primary); }
-        .btn-accent:hover { background-color: transparent; color: var(--accent); }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: var(--transition);
         }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        .btn:hover::before { left: 100%; }
+        .btn:hover { background-color: var(--secondary); transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+
+        .btn-secondary { background-color: var(--accent); color: var(--primary); }
+        .btn-secondary:hover { background-color: var(--secondary); color: white; }
 
         /* Header */
         header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             position: fixed;
             top: 0; left: 0;
             width: 100%;
             z-index: 1000;
             transition: var(--transition);
-            background: rgba(250,250,248,0.95);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 0;
+            padding: 25px 0;
         }
 
         .logo {
@@ -120,148 +105,129 @@
             align-items: center;
             text-decoration: none;
         }
+
         .logo img {
-            height: 44px;
+            height: 50px;
             width: auto;
         }
 
-        nav ul { display: flex; list-style: none; gap: 36px; }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 40px; }
+
         nav ul li a {
             text-decoration: none;
             color: var(--primary);
             font-weight: 500;
-            transition: var(--transition-fast);
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
             text-transform: uppercase;
+            position: relative;
         }
-        nav ul li a:hover, nav ul li a.active { color: var(--accent); }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 0;
+            width: 0; height: 1px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover { color: var(--accent); }
+        nav ul li a:hover::after { width: 100%; }
+        nav ul li a.active { color: var(--accent); }
+        nav ul li a.active::after { width: 100%; }
 
         .mobile-menu-btn {
             display: none;
             background: none;
             border: none;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             cursor: pointer;
             color: var(--primary);
-            z-index: 1001;
         }
 
-        .mobile-overlay {
-            position: fixed;
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(10, 37, 64, 0.8), rgba(10, 37, 64, 0.8)), url('IMG_9663.jpeg');
+            background-size: cover;
+            background-position: center;
+            padding: 200px 0 100px;
+            text-align: center;
+            color: white;
+        }
+
+        .page-header h1 { font-size: 4rem; color: white; margin-bottom: 20px; }
+        .page-header p { font-size: 1.2rem; max-width: 600px; margin: 0 auto; color: rgba(255,255,255,0.9); }
+
+        .breadcrumb { margin-top: 20px; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .breadcrumb span { color: rgba(255,255,255,0.7); }
+
+        /* Gallery Section */
+        .gallery-section { padding: 100px 0; background-color: var(--light-bg); }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 300px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .gallery-item:hover { transform: translateY(-10px); box-shadow: var(--shadow-hover); }
+
+        .gallery-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img { transform: scale(1.1); }
+
+        .gallery-overlay {
+            position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: var(--primary);
-            z-index: 999;
+            background: rgba(10, 37, 64, 0.7);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-        }
-        .mobile-overlay.active { opacity: 1; pointer-events: all; }
-        .mobile-overlay a {
-            font-family: 'DM Serif Display', serif;
-            font-size: 2.5rem;
-            color: white;
-            text-decoration: none;
-            margin: 12px 0;
-            transition: var(--transition-fast);
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        .mobile-overlay.active a { opacity: 1; transform: translateY(0); }
-        .mobile-overlay a:nth-child(1) { transition-delay: 0.1s; }
-        .mobile-overlay a:nth-child(2) { transition-delay: 0.15s; }
-        .mobile-overlay a:nth-child(3) { transition-delay: 0.2s; }
-        .mobile-overlay a:nth-child(4) { transition-delay: 0.25s; }
-        .mobile-overlay a:nth-child(5) { transition-delay: 0.3s; }
-        .mobile-overlay a:nth-child(6) { transition-delay: 0.35s; }
-        .mobile-overlay a:hover { color: var(--accent-light); }
-
-        /* Page Header */
-        .page-header {
-            background: linear-gradient(160deg, rgba(12,31,44,0.9), rgba(12,31,44,0.65)), url('IMG_9663.jpeg') center / cover no-repeat;
-            padding: 180px 0 100px;
+            transition: var(--transition);
+            padding: 20px;
             text-align: center;
             color: white;
         }
-        .page-header h1 { font-size: clamp(2.5rem, 5vw, 4rem); color: white; margin-bottom: 16px; }
-        .page-header p { font-size: 1.1rem; max-width: 500px; margin: 0 auto; color: rgba(255,255,255,0.75); font-weight: 300; }
-        .breadcrumb { margin-top: 20px; font-size: 0.85rem; }
-        .breadcrumb a { color: var(--accent-light); text-decoration: none; }
-        .breadcrumb span { color: rgba(255,255,255,0.5); }
 
-        /* Gallery */
-        .gallery-section { padding: 100px 0; background: var(--cream); }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
 
-        .filter-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 60px;
-        }
+        .gallery-overlay h3 { color: white; font-size: 1.5rem; margin-bottom: 10px; }
+        .gallery-overlay p { margin-bottom: 15px; font-size: 0.95rem; }
 
-        .filter-btn {
-            padding: 10px 24px;
-            background: white;
-            border: 1px solid #ddd;
-            color: var(--text);
-            cursor: pointer;
-            transition: var(--transition-fast);
+        .gallery-overlay .btn-small {
+            padding: 8px 16px;
+            background-color: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
             font-size: 0.8rem;
-            letter-spacing: 0.08em;
             text-transform: uppercase;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-        }
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--primary);
-            border-color: var(--primary);
-            color: white;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 24px;
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            height: 300px;
-            cursor: pointer;
+            letter-spacing: 0.05em;
             transition: var(--transition);
+            border: 1px solid var(--accent);
         }
-        .gallery-item:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
 
-        .gallery-item img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-        .gallery-item:hover img { transform: scale(1.06); }
-
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0; left: 0;
-            width: 100%;
-            padding: 28px 20px 20px;
-            background: linear-gradient(transparent, rgba(12,31,44,0.9));
-            color: white;
-            transform: translateY(16px);
-            opacity: 0;
-            transition: var(--transition);
-        }
-        .gallery-item:hover .gallery-overlay { transform: translateY(0); opacity: 1; }
-        .gallery-overlay h3 { color: white; font-size: 1.3rem; margin-bottom: 4px; }
-        .gallery-overlay p { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+        .gallery-overlay .btn-small:hover { background-color: transparent; color: white; }
 
         /* Lightbox */
         .lightbox {
@@ -269,20 +235,22 @@
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: rgba(0,0,0,0.92);
+            background-color: rgba(0,0,0,0.9);
             z-index: 2000;
             justify-content: center;
             align-items: center;
             flex-direction: column;
         }
+
         .lightbox.active { display: flex; }
 
-        .lightbox-content { position: relative; max-width: 90%; max-height: 85vh; }
+        .lightbox-content { max-width: 90%; max-height: 80%; position: relative; }
+
         .lightbox-content img {
             max-width: 100%;
-            max-height: 82vh;
-            border-radius: var(--radius);
-            box-shadow: 0 0 60px rgba(0,0,0,0.5);
+            max-height: 80vh;
+            border: 3px solid white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
 
         .lightbox-close {
@@ -290,23 +258,20 @@
             top: 20px; right: 20px;
             background: none;
             border: none;
-            color: rgba(255,255,255,0.6);
-            font-size: 1.5rem;
+            color: white;
+            font-size: 2rem;
             cursor: pointer;
-            transition: var(--transition-fast);
+            transition: var(--transition);
             z-index: 2001;
-            width: 44px; height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
-        .lightbox-close:hover { color: white; }
+
+        .lightbox-close:hover { color: var(--accent); transform: rotate(90deg); }
 
         .lightbox-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.1);
             color: white;
             border: none;
             width: 50px; height: 50px;
@@ -315,127 +280,149 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            transition: var(--transition-fast);
-            font-size: 1.2rem;
+            transition: var(--transition);
+            font-size: 1.5rem;
         }
+
         .lightbox-nav:hover { background: var(--accent); color: var(--primary); }
         .lightbox-nav.prev { left: 20px; }
         .lightbox-nav.next { right: 20px; }
 
-        .lightbox-caption {
-            color: rgba(255,255,255,0.7);
-            margin-top: 20px;
-            font-size: 0.95rem;
-            text-align: center;
+        .lightbox-caption { color: white; margin-top: 20px; font-size: 1rem; text-align: center; }
+
+        /* Filter Buttons */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
         }
 
-        .lightbox-counter {
-            color: rgba(255,255,255,0.4);
-            font-size: 0.8rem;
-            margin-top: 8px;
+        .filter-btn {
+            padding: 10px 25px;
+            background: white;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border-radius: 0;
         }
 
-        /* Instagram CTA */
-        .instagram-cta {
-            text-align: center;
-            margin-top: 70px;
-        }
-        .instagram-cta p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 20px;
-        }
+        .filter-btn:hover, .filter-btn.active { background: var(--primary); color: white; }
 
         /* Footer */
-        footer {
-            background: var(--dark);
-            color: rgba(255,255,255,0.6);
-            padding: 80px 0 0;
-        }
-        .footer-grid {
+        footer { background-color: var(--primary); color: white; padding: 80px 0 30px; }
+
+        .footer-content {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1.5fr;
             gap: 50px;
             margin-bottom: 60px;
         }
+
         .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 24px;
-            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
             position: relative;
-            padding-bottom: 14px;
+            padding-bottom: 15px;
+            color: white;
         }
+
         .footer-column h3::after {
             content: '';
             position: absolute;
             bottom: 0; left: 0;
-            width: 40px; height: 2px;
-            background: var(--accent);
-        }
-        .footer-links { list-style: none; }
-        .footer-links li { margin-bottom: 10px; }
-        .footer-links a {
-            color: rgba(255,255,255,0.5);
-            text-decoration: none;
-            transition: var(--transition-fast);
-            font-size: 0.9rem;
-        }
-        .footer-links a:hover { color: var(--accent-light); padding-left: 4px; }
-        .footer-social { display: flex; gap: 12px; margin-top: 20px; }
-        .footer-social a {
-            width: 38px; height: 38px;
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255,255,255,0.6);
-            text-decoration: none;
-            transition: var(--transition-fast);
-            font-size: 0.85rem;
-        }
-        .footer-social a:hover { background: var(--accent); border-color: var(--accent); color: var(--primary); }
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.08);
-            padding: 24px 0;
-            text-align: center;
-            font-size: 0.82rem;
+            width: 50px; height: 2px;
+            background-color: var(--accent);
         }
 
-        @media (max-width: 992px) {
-            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition);
         }
+
+        .footer-links a:hover { color: var(--accent); padding-left: 5px; }
+
+        .social-links { display: flex; gap: 15px; margin-top: 25px; }
+
+        .social-links a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px; height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover { background-color: var(--accent); transform: translateY(-3px); }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+
+        .footer-logo {
+            height: 45px;
+            width: auto;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .footer-content { grid-template-columns: 1fr 1fr; gap: 40px; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+        }
+
         @media (max-width: 768px) {
             .mobile-menu-btn { display: block; }
-            nav { display: none; }
+
+            nav ul {
+                position: fixed;
+                top: 90px; left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 30px 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-150%);
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            nav ul.active { transform: translateY(0); }
+            nav ul li { margin: 15px 0; }
+            .page-header h1 { font-size: 2.5rem; }
             .page-header { padding: 150px 0 80px; }
-            .footer-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
         }
+
         @media (max-width: 576px) {
             .gallery-grid { grid-template-columns: 1fr; }
+            .page-header h1 { font-size: 2rem; }
         }
     </style>
 </head>
 
 <body>
-    <!-- Mobile Overlay -->
-    <div class="mobile-overlay" id="mobileOverlay">
-        <a href="index.html">Home</a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#services">Services</a>
-        <a href="index.html#portfolio">Portfolio</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="index.html#contact">Contact</a>
-    </div>
-
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="index.html" class="logo"><img src="logo.png" alt="203 Carpentry &amp; Joinery"></a>
-            <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle menu">
-                <i class="fas fa-bars" id="menuIcon"></i>
-            </button>
+            <a href="index.html" class="logo"><img src="logo.jpg" alt="203 Carpentry &amp; Joinery"></a>
+            <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
             <nav>
                 <ul>
                     <li><a href="index.html#home">Home</a></li>
@@ -453,14 +440,14 @@
     <section class="page-header">
         <div class="container">
             <h1>Our Gallery</h1>
-            <p>A collection of bespoke joinery projects across Sussex</p>
+            <p>A collection of our finest bespoke joinery projects in Sussex</p>
             <div class="breadcrumb">
-                <a href="index.html">Home</a> <span>/ Gallery</span>
+                <a href="index.html">Home</a> / <span>Gallery</span>
             </div>
         </div>
     </section>
 
-    <!-- Gallery -->
+    <!-- Gallery Section -->
     <section class="gallery-section">
         <div class="container">
             <div class="filter-container">
@@ -472,102 +459,115 @@
             </div>
 
             <div class="gallery-grid" id="galleryGrid">
-                <div class="gallery-item reveal" data-category="bathroom">
-                    <img src="IMG_9275.jpeg" alt="Attic Bathroom with Clawfoot Bath" loading="lazy">
+                <div class="gallery-item" data-category="bathroom">
+                    <img src="IMG_9275.jpeg" alt="Attic Bathroom with Clawfoot Bath">
                     <div class="gallery-overlay">
                         <h3>Attic Bathroom</h3>
-                        <p>Clawfoot bath &amp; bespoke wall panelling</p>
+                        <p>Clawfoot bath, bespoke wall panelling &amp; Velux skylight</p>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn-small">View on Instagram</a>
                     </div>
                 </div>
-                <div class="gallery-item reveal" data-category="bathroom">
-                    <img src="IMG_9280.jpeg" alt="Attic Bathroom - Finished View" loading="lazy">
+                <div class="gallery-item" data-category="bathroom">
+                    <img src="IMG_9280.jpeg" alt="Attic Bathroom - Finished View">
                     <div class="gallery-overlay">
                         <h3>Attic Bathroom</h3>
-                        <p>Panelled walls with skylight</p>
+                        <p>Panelled walls with freestanding clawfoot bath and skylight</p>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn-small">View on Instagram</a>
                     </div>
                 </div>
-                <div class="gallery-item reveal" data-category="bathroom">
-                    <img src="IMG_9277.jpeg" alt="Attic Bathroom Door Detail" loading="lazy">
+                <div class="gallery-item" data-category="bathroom">
+                    <img src="IMG_9277.jpeg" alt="Attic Bathroom Door Detail">
                     <div class="gallery-overlay">
                         <h3>Attic Bathroom</h3>
-                        <p>Bespoke panelled door &amp; wainscoting</p>
+                        <p>Bespoke panelled door &amp; wainscoting detail</p>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn-small">View on Instagram</a>
                     </div>
                 </div>
-                <div class="gallery-item reveal" data-category="bathroom">
-                    <img src="IMG_0714.jpeg" alt="Heritage Bathroom" loading="lazy">
+                <div class="gallery-item" data-category="bathroom">
+                    <img src="IMG_0714.jpeg" alt="Bathroom with Arched Tiled Shower">
                     <div class="gallery-overlay">
                         <h3>Heritage Bathroom</h3>
-                        <p>Arched tiled shower &amp; tongue-and-groove</p>
+                        <p>Tongue &amp; groove panelling, arched tiled shower enclosure &amp; bespoke joinery</p>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn-small">View on Instagram</a>
                     </div>
                 </div>
-                <div class="gallery-item reveal" data-category="cabinetry">
-                    <img src="IMG_8958.jpeg" alt="Built-in Media Wall" loading="lazy">
+                <div class="gallery-item" data-category="cabinetry">
+                    <img src="IMG_8958.jpeg" alt="Built-in Media Wall with LED Lighting">
                     <div class="gallery-overlay">
                         <h3>Bespoke Media Wall</h3>
-                        <p>LED-lit shelving &amp; panelled cabinets</p>
+                        <p>Full-width built-in unit with LED-lit shelving &amp; painted panelled cabinets</p>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn-small">View on Instagram</a>
                     </div>
                 </div>
-                <div class="gallery-item reveal" data-category="cabinetry">
-                    <img src="IMG_9176.jpeg" alt="Media Wall Wide View" loading="lazy">
+                <div class="gallery-item" data-category="cabinetry">
+                    <img src="IMG_9176.jpeg" alt="Media Wall Wide Room View">
                     <div class="gallery-overlay">
-                        <h3>Media Wall</h3>
-                        <p>Herringbone oak parquet flooring</p>
+                        <h3>Bespoke Media Wall</h3>
+                        <p>Wide room view with herringbone oak parquet flooring</p>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn-small">View on Instagram</a>
                     </div>
                 </div>
-                <div class="gallery-item reveal" data-category="cabinetry">
-                    <img src="IMG_8932.jpeg" alt="Media Wall Evening Light" loading="lazy">
+                <div class="gallery-item" data-category="cabinetry">
+                    <img src="IMG_8932.jpeg" alt="Media Wall in Warm Evening Light">
                     <div class="gallery-overlay">
-                        <h3>Media Wall</h3>
-                        <p>Evening light on panelled cabinetry</p>
+                        <h3>Bespoke Media Wall</h3>
+                        <p>Evening light highlighting panelled cabinetry &amp; herringbone floor</p>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn-small">View on Instagram</a>
                     </div>
                 </div>
-                <div class="gallery-item reveal" data-category="cabinetry">
-                    <img src="ADAEB7DB-8D0A-458F-A250-CF7D9DE23A45.jpeg" alt="Alcove TV Unit" loading="lazy">
+                <div class="gallery-item" data-category="cabinetry">
+                    <img src="ADAEB7DB-8D0A-458F-A250-CF7D9DE23A45.jpeg" alt="Built-in Alcove TV Unit">
                     <div class="gallery-overlay">
                         <h3>Alcove TV Unit</h3>
-                        <p>Oak shelving &amp; painted cabinets</p>
+                        <p>Built-in media unit with solid oak shelving &amp; painted lower cabinets</p>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn-small">View on Instagram</a>
                     </div>
                 </div>
-                <div class="gallery-item reveal" data-category="bedroom">
-                    <img src="IMG_1347.jpeg" alt="Dark Bedroom Wardrobes" loading="lazy">
+                <div class="gallery-item" data-category="bedroom">
+                    <img src="IMG_1347.jpeg" alt="Dark Fitted Bedroom Wardrobes">
                     <div class="gallery-overlay">
-                        <h3>Bedroom Wardrobes</h3>
-                        <p>Dark-painted wardrobes &amp; period fireplace</p>
+                        <h3>Bespoke Bedroom Wardrobes</h3>
+                        <p>Freestanding dark-painted wardrobes flanking a period fireplace</p>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn-small">View on Instagram</a>
                     </div>
                 </div>
-                <div class="gallery-item reveal" data-category="bedroom">
-                    <img src="IMG_1346.jpeg" alt="Wardrobes with Fireplace" loading="lazy">
+                <div class="gallery-item" data-category="bedroom">
+                    <img src="IMG_1346.jpeg" alt="Bedroom Wardrobes with Fireplace">
                     <div class="gallery-overlay">
-                        <h3>Bedroom Wardrobes</h3>
-                        <p>Panelled doors in dark finish</p>
+                        <h3>Bespoke Bedroom Wardrobes</h3>
+                        <p>Panelled wardrobe doors in dark finish, complementing original fireplace</p>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn-small">View on Instagram</a>
                     </div>
                 </div>
-                <div class="gallery-item reveal" data-category="bedroom">
-                    <img src="IMG_1349.jpeg" alt="Wardrobe Side View" loading="lazy">
+                <div class="gallery-item" data-category="bedroom">
+                    <img src="IMG_1349.jpeg" alt="Bedroom Wardrobe Side View">
                     <div class="gallery-overlay">
-                        <h3>Bedroom Wardrobes</h3>
-                        <p>Side view with period fireplace</p>
+                        <h3>Bespoke Bedroom Wardrobes</h3>
+                        <p>Side view showing wardrobe depth alongside period fireplace</p>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn-small">View on Instagram</a>
                     </div>
                 </div>
-                <div class="gallery-item reveal" data-category="bedroom">
-                    <img src="IMG_1348.jpeg" alt="Wardrobe Detail" loading="lazy">
+                <div class="gallery-item" data-category="bedroom">
+                    <img src="IMG_1348.jpeg" alt="Dark Wardrobe Close-up">
                     <div class="gallery-overlay">
                         <h3>Wardrobe Detail</h3>
-                        <p>Close-up of dark panelling</p>
+                        <p>Close-up of dark panelled wardrobe beside cast iron fireplace</p>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn-small">View on Instagram</a>
                     </div>
                 </div>
-                <div class="gallery-item reveal" data-category="windows">
-                    <img src="IMG_0659.jpeg" alt="Sash Bay Windows" loading="lazy">
+                <div class="gallery-item" data-category="windows">
+                    <img src="IMG_0659.jpeg" alt="Bespoke Bay Sash Windows">
                     <div class="gallery-overlay">
-                        <h3>Sash Bay Window</h3>
-                        <p>Handcrafted timber sash windows</p>
+                        <h3>Bespoke Sash Bay Window</h3>
+                        <p>Handcrafted timber sash windows with glazing bars, set in a period bay</p>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn-small">View on Instagram</a>
                     </div>
                 </div>
             </div>
 
-            <div class="instagram-cta reveal">
-                <p>See more of our work on Instagram</p>
-                <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-accent">
+            <div style="text-align: center; margin-top: 60px;">
+                <p style="margin-bottom: 20px; font-size: 1.2rem;">See more of our work on Instagram</p>
+                <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-secondary">
                     <i class="fab fa-instagram"></i> Follow @203_carpentry
                 </a>
             </div>
@@ -583,25 +583,27 @@
             <img src="" alt="" id="lightboxImg">
         </div>
         <div class="lightbox-caption" id="lightboxCaption"></div>
-        <div class="lightbox-counter" id="lightboxCounter"></div>
     </div>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-grid">
+            <div class="footer-content">
                 <div class="footer-column">
-                    <img src="logo-white.png" alt="203 Carpentry &amp; Joinery" style="height:40px;width:auto;margin-bottom:16px;">
-                    <p>Bespoke joinery and custom woodwork crafted in Sussex.</p>
-                    <div class="footer-social">
-                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <img src="logo-white.png" alt="203 Carpentry &amp; Joinery" class="footer-logo">
+                    <p>Creating exceptional custom woodwork in Sussex that transforms spaces.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
-                    <h3>Navigation</h3>
+                    <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
                         <li><a href="index.html#services">Services</a></li>
                         <li><a href="index.html#portfolio">Portfolio</a></li>
                         <li><a href="gallery.html">Gallery</a></li>
@@ -609,55 +611,40 @@
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Services</h3>
+                    <h3>Our Services</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html#services">Built-in Cabinetry</a></li>
-                        <li><a href="index.html#services">Media Walls</a></li>
-                        <li><a href="index.html#services">Bathroom Panelling</a></li>
-                        <li><a href="index.html#services">Doors &amp; Windows</a></li>
-                        <li><a href="index.html#services">Bedroom Furniture</a></li>
+                        <li><a href="#">Custom Cabinetry</a></li>
+                        <li><a href="#">Staircases</a></li>
+                        <li><a href="#">Furniture</a></li>
+                        <li><a href="#">Doors &amp; Windows</a></li>
+                        <li><a href="#">Bathrooms</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Contact</h3>
+                    <h3>Contact Info</h3>
                     <ul class="footer-links">
-                        <li>Sussex, United Kingdom</li>
-                        <li><a href="tel:07368860029">07368 860029</a></li>
-                        <li>info@203carpentry.co.uk</li>
-                        <li><a href="https://www.instagram.com/203_carpentry/" target="_blank">@203_carpentry</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Sussex, United Kingdom</li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:07368860029">07368 860029</a></li>
+                        <li><i class="fas fa-envelope"></i> info@203carpentry.co.uk</li>
+                        <li><i class="fab fa-instagram"></i> @203_carpentry</li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 203 Carpentry. Based in Sussex. All Rights Reserved.</p>
+            <div class="copyright">
+                <p>&copy; 2024 203 Carpentry. Based in Sussex. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile menu
-        const menuBtn = document.getElementById('menuBtn');
-        const menuIcon = document.getElementById('menuIcon');
-        const mobileOverlay = document.getElementById('mobileOverlay');
-        let menuOpen = false;
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('nav ul');
+        mobileMenuBtn.addEventListener('click', () => navMenu.classList.toggle('active'));
 
-        menuBtn.addEventListener('click', () => {
-            menuOpen = !menuOpen;
-            mobileOverlay.classList.toggle('active', menuOpen);
-            menuIcon.className = menuOpen ? 'fas fa-times' : 'fas fa-bars';
-            document.body.style.overflow = menuOpen ? 'hidden' : '';
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => navMenu.classList.remove('active'));
         });
 
-        document.querySelectorAll('.mobile-overlay a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuOpen = false;
-                mobileOverlay.classList.remove('active');
-                menuIcon.className = 'fas fa-bars';
-                document.body.style.overflow = '';
-            });
-        });
-
-        // Filter
         const filterButtons = document.querySelectorAll('.filter-btn');
         const galleryItems = document.querySelectorAll('.gallery-item');
 
@@ -665,94 +652,88 @@
             button.addEventListener('click', () => {
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
-                const filter = button.getAttribute('data-filter');
+                const filterValue = button.getAttribute('data-filter');
                 galleryItems.forEach(item => {
-                    const show = filter === 'all' || item.getAttribute('data-category') === filter;
-                    item.style.display = show ? 'block' : 'none';
+                    item.style.display = (filterValue === 'all' || item.getAttribute('data-category') === filterValue) ? 'block' : 'none';
                 });
             });
         });
 
-        // Lightbox
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const lightboxCaption = document.getElementById('lightboxCaption');
-        const lightboxCounter = document.getElementById('lightboxCounter');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
 
-        let currentIndex = 0;
-        let images = [];
+        let currentImageIndex = 0;
+        const galleryImages = [];
 
-        function collectImages() {
-            images = [];
+        function updateGalleryImages() {
+            galleryImages.length = 0;
             document.querySelectorAll('.gallery-item').forEach(item => {
                 if (item.style.display !== 'none') {
                     const img = item.querySelector('img');
-                    const h3 = item.querySelector('h3');
-                    images.push({ src: img.src, title: h3 ? h3.textContent : '' });
+                    const title = item.querySelector('h3') ? item.querySelector('h3').textContent : '203 Carpentry Project';
+                    galleryImages.push({ src: img.src, title: title });
                 }
             });
-        }
-
-        function showImage(idx) {
-            lightboxImg.src = images[idx].src;
-            lightboxCaption.textContent = images[idx].title;
-            lightboxCounter.textContent = `${idx + 1} / ${images.length}`;
         }
 
         document.querySelectorAll('.gallery-item').forEach(item => {
             item.addEventListener('click', (e) => {
-                if (e.target.closest('.btn-small')) return;
-                collectImages();
-                const src = item.querySelector('img').src;
-                currentIndex = images.findIndex(i => i.src === src);
-                if (currentIndex === -1) currentIndex = 0;
-                showImage(currentIndex);
+                if (e.target.classList.contains('btn-small') || e.target.parentElement.classList.contains('btn-small')) return;
+                updateGalleryImages();
+                const img = item.querySelector('img');
+                const title = item.querySelector('h3') ? item.querySelector('h3').textContent : '203 Carpentry Project';
+                currentImageIndex = galleryImages.findIndex(image => image.src === img.src);
+                if (currentImageIndex === -1) currentImageIndex = 0;
+                lightboxImg.src = img.src;
+                lightboxCaption.textContent = title;
                 lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
             });
         });
 
-        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+        lightboxClose.addEventListener('click', () => lightbox.classList.remove('active'));
 
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        document.getElementById('lightboxPrev').addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            showImage(currentIndex);
-        });
-
-        document.getElementById('lightboxNext').addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % images.length;
-            showImage(currentIndex);
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (!lightbox.classList.contains('active')) return;
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowLeft') document.getElementById('lightboxPrev').click();
-            if (e.key === 'ArrowRight') document.getElementById('lightboxNext').click();
-        });
-
-        // Touch swipe for lightbox
-        let touchStartX = 0;
-        lightbox.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
-        lightbox.addEventListener('touchend', (e) => {
-            const diff = e.changedTouches[0].screenX - touchStartX;
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) document.getElementById('lightboxPrev').click();
-                else document.getElementById('lightboxNext').click();
+        lightboxPrev.addEventListener('click', () => {
+            if (galleryImages.length > 0) {
+                currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+                lightboxImg.src = galleryImages[currentImageIndex].src;
+                lightboxCaption.textContent = galleryImages[currentImageIndex].title;
             }
         });
 
-        // Scroll reveal
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-       
+        lightboxNext.addEventListener('click', () => {
+            if (galleryImages.length > 0) {
+                currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+                lightboxImg.src = galleryImages[currentImageIndex].src;
+                lightboxCaption.textContent = galleryImages[currentImageIndex].title;
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) lightbox.classList.remove('active');
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'ArrowLeft') lightboxPrev.click();
+                else if (e.key === 'ArrowRight') lightboxNext.click();
+            }
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) lightbox.classList.remove('active');
+        });
+
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            }
+        });
+    </script>
+</body>
+</html>
