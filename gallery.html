@@ -116,12 +116,14 @@
         }
 
         .logo {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.8rem;
-            color: var(--primary);
+            display: flex;
+            align-items: center;
             text-decoration: none;
         }
-        .logo span { color: var(--accent); }
+        .logo img {
+            height: 44px;
+            width: auto;
+        }
 
         nav ul { display: flex; list-style: none; gap: 36px; }
         nav ul li a {
@@ -430,7 +432,7 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <a href="index.html" class="logo">203<span>Carpentry</span></a>
+            <a href="index.html" class="logo"><img src="logo.png" alt="203 Carpentry &amp; Joinery"></a>
             <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle menu">
                 <i class="fas fa-bars" id="menuIcon"></i>
             </button>
@@ -563,9 +565,6 @@
                 </div>
             </div>
 
-            <!-- Extra images added via admin will appear here -->
-            <div id="adminGalleryItems"></div>
-
             <div class="instagram-cta reveal">
                 <p>See more of our work on Instagram</p>
                 <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-accent">
@@ -592,7 +591,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <h3>203 Carpentry</h3>
+                    <img src="logo.png" alt="203 Carpentry &amp; Joinery" style="height:40px;width:auto;filter:brightness(0) invert(1);margin-bottom:16px;">
                     <p>Bespoke joinery and custom woodwork crafted in Sussex.</p>
                     <div class="footer-social">
                         <a href="https://www.instagram.com/203_carpentry/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -623,6 +622,7 @@
                     <h3>Contact</h3>
                     <ul class="footer-links">
                         <li>Sussex, United Kingdom</li>
+                        <li><a href="tel:07368860029">07368 860029</a></li>
                         <li>info@203carpentry.co.uk</li>
                         <li><a href="https://www.instagram.com/203_carpentry/" target="_blank">@203_carpentry</a></li>
                     </ul>
@@ -634,7 +634,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Mobile menu
         const menuBtn = document.getElementById('menuBtn');
         const menuIcon = document.getElementById('menuIcon');
@@ -748,46 +748,6 @@
             }
         });
 
-        // Load admin-added images
-        function loadAdminImages() {
-            try {
-                const images = JSON.parse(localStorage.getItem('203_gallery_images') || '[]');
-                if (!images.length) return;
-
-                const grid = document.getElementById('galleryGrid');
-                images.forEach(img => {
-                    const item = document.createElement('div');
-                    item.className = 'gallery-item reveal';
-                    item.setAttribute('data-category', img.category);
-                    item.innerHTML = `
-                        <img src="${img.src}" alt="${img.title}" loading="lazy">
-                        <div class="gallery-overlay">
-                            <h3>${img.title}</h3>
-                            <p>${img.description || ''}</p>
-                        </div>
-                    `;
-
-                    // Add click handler for lightbox
-                    item.addEventListener('click', (e) => {
-                        collectImages();
-                        const src = item.querySelector('img').src;
-                        currentIndex = images.findIndex(i => i.src === src);
-                        if (currentIndex === -1) currentIndex = 0;
-                        showImage(currentIndex);
-                        lightbox.classList.add('active');
-                        document.body.style.overflow = 'hidden';
-                    });
-
-                    grid.appendChild(item);
-                });
-
-                // Re-observe for reveal animation
-                document.querySelectorAll('.gallery-item.reveal:not(.visible)').forEach(el => observer.observe(el));
-            } catch (e) {
-                console.warn('Could not load admin images:', e);
-            }
-        }
-
         // Scroll reveal
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -795,13 +755,4 @@
                     entry.target.classList.add('visible');
                     observer.unobserve(entry.target);
                 }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // Load any images added via the admin page
-        loadAdminImages();
-    </script>
-</body>
-</html>
+       

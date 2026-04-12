@@ -209,18 +209,24 @@
         header.scrolled .header-container { padding: 16px 0; }
 
         .logo {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.8rem;
-            color: var(--primary);
+            display: flex;
+            align-items: center;
             text-decoration: none;
         }
 
-        header:not(.scrolled) .logo { color: white; }
+        .logo img {
+            height: 44px;
+            width: auto;
+            transition: var(--transition-fast);
+        }
+
+        header:not(.scrolled) .logo img {
+            filter: brightness(0) invert(1);
+        }
+
         header:not(.scrolled) nav ul li a { color: rgba(255,255,255,0.85); }
         header:not(.scrolled) nav ul li a:hover { color: var(--accent-light); }
         header:not(.scrolled) .mobile-menu-btn { color: white; }
-
-        .logo span { color: var(--accent); }
 
         nav ul { display: flex; list-style: none; gap: 36px; }
 
@@ -900,7 +906,7 @@
     <!-- Header -->
     <header id="mainHeader">
         <div class="container header-container">
-            <a href="index.html" class="logo">203<span>Carpentry</span></a>
+            <a href="index.html" class="logo"><img src="logo.png" alt="203 Carpentry &amp; Joinery"></a>
             <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle menu">
                 <i class="fas fa-bars" id="menuIcon"></i>
             </button>
@@ -1120,7 +1126,14 @@
                         <div class="contact-detail-icon"><i class="fas fa-envelope"></i></div>
                         <div>
                             <h4>Email</h4>
-                            <p>info@203carpentry.co.uk</p>
+                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="87eee9e1e8c7b5b7b4e4e6f5f7e2e9f3f5fea9e4e8a9f2ec">[email&#160;protected]</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <div class="contact-detail-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p><a href="tel:07368860029" style="color:var(--text-light);text-decoration:none;">07368 860029</a></p>
                         </div>
                     </div>
                     <div class="contact-detail">
@@ -1166,7 +1179,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <h3>203 Carpentry</h3>
+                    <img src="logo.png" alt="203 Carpentry &amp; Joinery" style="height:40px;width:auto;filter:brightness(0) invert(1);margin-bottom:16px;">
                     <p>Bespoke joinery and custom woodwork crafted in Sussex.</p>
                     <div class="footer-social">
                         <a href="https://www.instagram.com/203_carpentry/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1197,6 +1210,7 @@
                     <h3>Contact</h3>
                     <ul class="footer-links">
                         <li>Sussex, United Kingdom</li>
+                        <li><a href="tel:07368860029">07368 860029</a></li>
                         <li>info@203carpentry.co.uk</li>
                         <li><a href="https://www.instagram.com/203_carpentry/" target="_blank">@203_carpentry</a></li>
                     </ul>
@@ -1208,7 +1222,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // ─── HEADER SCROLL ───
         const header = document.getElementById('mainHeader');
         window.addEventListener('scroll', () => {
@@ -1305,14 +1319,4 @@
                 const email = contactForm.querySelector('#email').value;
                 const subject = contactForm.querySelector('#subject').value;
                 const message = contactForm.querySelector('#message').value;
-                window.location.href = `mailto:info@203carpentry.co.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
-                formStatus.textContent = 'Opening your email client...';
-                formStatus.className = 'form-status success';
-            }
-
-            btn.textContent = 'Send Message';
-            btn.disabled = false;
-        });
-    </script>
-</body>
-</html>
+                window.location.href = `mailto:info@203carpentry.co.uk?subject=${encodeURICom
