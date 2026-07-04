@@ -170,24 +170,33 @@
             font-weight: 300;
         }
 
-        /* Sticky Social Media Bar */
+        /* Sticky Social Media Bar - FIXED */
         .sticky-social-bar {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
-            z-index: 998;
-            padding: 15px 0;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.08);
+            z-index: 999;
+            padding: 14px 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
             transform: translateY(100%);
+            opacity: 0;
+            will-change: transform, opacity;
         }
 
         .sticky-social-bar.visible {
             transform: translateY(0);
+            opacity: 1;
+        }
+
+        .sticky-social-bar.hidden {
+            transform: translateY(100%);
+            opacity: 0;
         }
 
         .sticky-social-container {
@@ -196,7 +205,7 @@
             align-items: center;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
         .sticky-social-text {
@@ -218,15 +227,15 @@
 
         .sticky-social-icons {
             display: flex;
-            gap: 15px;
+            gap: 12px;
         }
 
         .sticky-social-icons a {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             background-color: var(--primary);
             border-radius: 50%;
             color: white;
@@ -248,15 +257,16 @@
             transition: var(--transition);
             padding: 5px;
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            width: 34px;
+            height: 34px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-left: 8px;
         }
 
         .sticky-social-close:hover {
-            background-color: rgba(0, 0, 0, 0.05);
+            background-color: rgba(0, 0, 0, 0.06);
             color: var(--primary);
         }
 
@@ -996,8 +1006,13 @@
             }
             .sticky-social-container {
                 flex-direction: column;
-                gap: 15px;
+                gap: 12px;
                 text-align: center;
+                padding: 0 16px;
+            }
+            .sticky-social-text {
+                flex-direction: column;
+                gap: 4px;
             }
             .hero-buttons .btn {
                 min-width: 180px;
@@ -1046,10 +1061,6 @@
             .footer-content {
                 grid-template-columns: 1fr;
             }
-            .sticky-social-text {
-                flex-direction: column;
-                gap: 5px;
-            }
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -1059,6 +1070,16 @@
                 min-width: 220px;
                 width: 100%;
                 max-width: 300px;
+            }
+            .sticky-social-text h4 {
+                font-size: 1rem;
+            }
+            .sticky-social-text p {
+                font-size: 0.8rem;
+            }
+            .sticky-social-icons a {
+                width: 38px;
+                height: 38px;
             }
         }
 
@@ -1073,14 +1094,17 @@
                 grid-template-columns: 1fr;
             }
             .sticky-social-bar {
-                padding: 10px 0;
+                padding: 12px 0;
+            }
+            .sticky-social-container {
+                gap: 10px;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Sticky Social Media Bar -->
+    <!-- Sticky Social Media Bar - FIXED -->
     <div class="sticky-social-bar" id="stickySocialBar">
         <div class="sticky-social-container">
             <div class="sticky-social-text">
@@ -1424,6 +1448,7 @@
     </footer>
 
     <script>
+        // Mobile menu
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navMenu = document.querySelector('nav ul');
         mobileMenuBtn.addEventListener('click', () => navMenu.classList.toggle('active'));
@@ -1432,6 +1457,7 @@
             link.addEventListener('click', () => navMenu.classList.remove('active'));
         });
 
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1444,6 +1470,7 @@
             });
         });
 
+        // Header shadow on scroll
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
@@ -1455,20 +1482,93 @@
             }
         });
 
-        const stickySocialBar = document.getElementById('stickySocialBar');
-        const closeStickySocial = document.getElementById('closeStickySocial');
+        // ===== STICKY SOCIAL BAR - FIXED =====
+        const stickyBar = document.getElementById('stickySocialBar');
+        const closeBtn = document.getElementById('closeStickySocial');
+        let barVisible = false;
+        let hideTimeout = null;
 
-        setTimeout(() => stickySocialBar.classList.add('visible'), 3000);
-        closeStickySocial.addEventListener('click', () => stickySocialBar.classList.remove('visible'));
+        function showSocialBar() {
+            if (!barVisible) {
+                stickyBar.classList.remove('hidden');
+                stickyBar.classList.add('visible');
+                barVisible = true;
+            }
+        }
 
-        const footer = document.querySelector('footer');
-        const observer = new IntersectionObserver((entries) => {
+        function hideSocialBar() {
+            if (barVisible) {
+                stickyBar.classList.remove('visible');
+                stickyBar.classList.add('hidden');
+                barVisible = false;
+            }
+        }
+
+        // Show after 3 seconds on load
+        setTimeout(showSocialBar, 3000);
+
+        // Close button
+        closeBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            hideSocialBar();
+            // Reset timer so it doesn't reappear immediately
+            if (hideTimeout) clearTimeout(hideTimeout);
+            // Show again after 10 seconds if user hasn't scrolled to footer
+            hideTimeout = setTimeout(() => {
+                // Only show if not at footer
+                const footerRect = document.querySelector('footer').getBoundingClientRect();
+                if (footerRect.top > window.innerHeight) {
+                    showSocialBar();
+                }
+            }, 10000);
+        });
+
+        // Hide when footer is visible
+        const footerObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) stickySocialBar.classList.remove('visible');
+                if (entry.isIntersecting) {
+                    hideSocialBar();
+                    if (hideTimeout) clearTimeout(hideTimeout);
+                } else {
+                    // Only show if it was previously hidden by footer and user scrolls up
+                    // but don't auto-show if user closed it manually
+                    if (!barVisible && !stickyBar.classList.contains('hidden')) {
+                        // This means it was hidden by footer, show again when footer out of view
+                        setTimeout(() => {
+                            const footerRect = document.querySelector('footer').getBoundingClientRect();
+                            if (footerRect.top > window.innerHeight && !barVisible) {
+                                showSocialBar();
+                            }
+                        }, 500);
+                    }
+                }
             });
         }, { threshold: 0.1 });
-        observer.observe(footer);
+        footerObserver.observe(document.querySelector('footer'));
 
+        // Also hide when at bottom of page
+        window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+
+            // If near bottom (within 100px), hide
+            if (scrollY + windowHeight >= documentHeight - 100) {
+                hideSocialBar();
+            } else if (!barVisible && !stickyBar.classList.contains('hidden')) {
+                // Only show again if we scroll up from bottom
+                // and if user didn't close it manually
+                const footerRect = document.querySelector('footer').getBoundingClientRect();
+                if (footerRect.top > windowHeight) {
+                    // But only if it wasn't manually closed (check if it has 'hidden' class)
+                    if (!stickyBar.classList.contains('hidden')) {
+                        showSocialBar();
+                    }
+                }
+            }
+        });
+
+        // Scroll indicator
         document.querySelector('.scroll-indicator').addEventListener('click', () => {
             window.scrollTo({ top: document.getElementById('about').offsetTop - 100, behavior: 'smooth' });
         });
