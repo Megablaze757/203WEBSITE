@@ -232,22 +232,62 @@
         .mobile-menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
 
         /* Hero */
+        html { scroll-behavior: smooth; }
+
         .hero {
             position: relative;
             height: 100vh;
+            min-height: 560px;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
-            background: linear-gradient(rgba(10, 37, 64, 0.7), rgba(10, 37, 64, 0.5)), url('IMG_9663.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+        }
+
+        .hero-media {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+            transform: scale(1.12);
+            animation: heroZoom 12s ease-out forwards;
+        }
+
+        .hero-media::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10,37,64,0.65) 0%, rgba(10,37,64,0.4) 45%, rgba(10,37,64,0.75) 100%);
+        }
+
+        @keyframes heroZoom {
+            to { transform: scale(1); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-media img { animation: none; transform: scale(1); }
         }
 
         .hero-content { position: relative; z-index: 2; max-width: 900px; padding: 0 20px; }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
 
         .hero h1 {
             font-size: 5rem;
@@ -600,6 +640,9 @@
 
     <!-- Hero -->
     <section class="hero" id="home">
+        <div class="hero-media">
+            <img src="IMG_9663.jpeg" alt="Bespoke joinery craftsmanship by 203 Carpentry">
+        </div>
         <div class="hero-content">
             <h1>Bespoke Joinery in Sussex</h1>
             <p>Transforming spaces with custom-crafted woodwork that combines timeless elegance with modern functionality.</p>
@@ -615,12 +658,12 @@
     <!-- About -->
     <section class="about" id="about">
         <div class="container">
-            <div class="section-title">
+            <div class="section-title reveal">
                 <h2>About Us</h2>
                 <p>Based in Sussex, we create bespoke joinery that transforms spaces with quality craftsmanship.</p>
             </div>
             <div class="about-content">
-                <div class="about-text">
+                <div class="about-text reveal">
                     <h3>Crafting Excellence in Sussex</h3>
                     <p>At 203 Carpentry, we blend traditional craftsmanship with contemporary design to create exceptional woodwork. Our skilled artisans take pride in every detail, ensuring each piece is not just furniture, but a work of art.</p>
                     <p>Whether it's custom cabinetry, elegant windows and doors, or bespoke bedroom furniture, we work closely with our clients throughout Sussex to bring their vision to life. See our work on <a href="https://www.instagram.com/203_carpentry/" target="_blank" style="color: var(--accent);">Instagram</a> for our latest projects.</p>
@@ -636,7 +679,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="about-image">
+                <div class="about-image reveal">
                     <img src="IMG_9176.jpeg" alt="Bespoke media wall with herringbone oak floor">
                 </div>
             </div>
@@ -646,12 +689,12 @@
     <!-- Services -->
     <section class="services" id="services">
         <div class="container container-narrow">
-            <div class="section-title">
+            <div class="section-title reveal">
                 <h2>Our Services</h2>
                 <p>We offer a comprehensive range of bespoke joinery services tailored to your specific needs.</p>
             </div>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-img">
                         <img src="IMG_8958.jpeg" alt="Bespoke built-in media wall with LED shelving">
                     </div>
@@ -660,7 +703,7 @@
                         <p>Floor-to-ceiling bespoke units with integrated lighting, panelled doors and oak shelving — designed to make a statement in any living space.</p>
                     </div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-img">
                         <img src="IMG_9280.jpeg" alt="Attic bathroom with bespoke panelling and clawfoot bath">
                     </div>
@@ -669,7 +712,7 @@
                         <p>Bespoke wall panelling, wainscoting and fitted joinery that bring character and craftsmanship to bathrooms of every style.</p>
                     </div>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-img">
                         <img src="IMG_0659.jpeg" alt="Bespoke timber sash bay window">
                     </div>
@@ -685,12 +728,12 @@
     <!-- Portfolio -->
     <section class="portfolio" id="portfolio">
         <div class="container">
-            <div class="section-title">
+            <div class="section-title reveal">
                 <h2>Our Recent Work</h2>
                 <p>Explore our latest projects showcasing our craftsmanship and attention to detail.</p>
             </div>
             <div class="portfolio-grid">
-                <div class="portfolio-item">
+                <div class="portfolio-item reveal">
                     <img src="IMG_8958.jpeg" alt="Bespoke Media Wall with LED Shelving">
                     <div class="portfolio-overlay">
                         <h3>Bespoke Media Wall</h3>
@@ -698,7 +741,7 @@
                         <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline" style="border-color:white;color:white;">View on Instagram</a>
                     </div>
                 </div>
-                <div class="portfolio-item">
+                <div class="portfolio-item reveal">
                     <img src="IMG_9280.jpeg" alt="Attic Bathroom with Clawfoot Bath and Panelling">
                     <div class="portfolio-overlay">
                         <h3>Attic Bathroom</h3>
@@ -706,7 +749,7 @@
                         <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline" style="border-color:white;color:white;">View on Instagram</a>
                     </div>
                 </div>
-                <div class="portfolio-item">
+                <div class="portfolio-item reveal">
                     <img src="IMG_0714.jpeg" alt="Heritage Bathroom with Arched Tiled Shower">
                     <div class="portfolio-overlay">
                         <h3>Heritage Bathroom</h3>
@@ -714,7 +757,7 @@
                         <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline" style="border-color:white;color:white;">View on Instagram</a>
                     </div>
                 </div>
-                <div class="portfolio-item">
+                <div class="portfolio-item reveal">
                     <img src="IMG_1347.jpeg" alt="Bespoke Dark Bedroom Wardrobes">
                     <div class="portfolio-overlay">
                         <h3>Bespoke Bedroom Wardrobes</h3>
@@ -722,7 +765,7 @@
                         <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline" style="border-color:white;color:white;">View on Instagram</a>
                     </div>
                 </div>
-                <div class="portfolio-item">
+                <div class="portfolio-item reveal">
                     <img src="IMG_0659.jpeg" alt="Bespoke Timber Sash Bay Window">
                     <div class="portfolio-overlay">
                         <h3>Bespoke Sash Bay Window</h3>
@@ -730,7 +773,7 @@
                         <a href="https://www.instagram.com/203_carpentry/" target="_blank" class="btn btn-outline" style="border-color:white;color:white;">View on Instagram</a>
                     </div>
                 </div>
-                <div class="portfolio-item">
+                <div class="portfolio-item reveal">
                     <img src="ADAEB7DB-8D0A-458F-A250-CF7D9DE23A45.jpeg" alt="Built-in Alcove TV Unit with Oak Shelving">
                     <div class="portfolio-overlay">
                         <h3>Alcove TV Unit</h3>
@@ -749,12 +792,12 @@
     <!-- Contact -->
     <section class="contact" id="contact">
         <div class="container">
-            <div class="section-title">
+            <div class="section-title reveal">
                 <h2>Contact Us</h2>
                 <p>Ready to start your bespoke joinery project in Sussex? Get in touch with us today.</p>
             </div>
             <div class="contact-content">
-                <div class="contact-info">
+                <div class="contact-info reveal">
                     <h3>Get In Touch</h3>
                     <p>Contact us to discuss your project requirements and schedule a consultation.</p>
                     <div class="contact-details">
@@ -788,7 +831,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="contact-form">
+                <div class="contact-form reveal">
                     <h3>Send Us a Message</h3>
                     <form id="contactForm">
                         <div class="form-group">
@@ -934,6 +977,26 @@
         document.querySelector('.scroll-indicator').addEventListener('click', () => {
             window.scrollTo({ top: document.getElementById('about').offsetTop - 100, behavior: 'smooth' });
         });
+
+        // Scroll reveal: fade/rise elements into view, staggered within their group
+        const revealParents = new Map();
+        document.querySelectorAll('.reveal').forEach((el) => {
+            const parent = el.parentElement;
+            const index = revealParents.has(parent) ? revealParents.get(parent) : 0;
+            el.style.transitionDelay = `${Math.min(index * 0.12, 0.6)}s`;
+            revealParents.set(parent, index + 1);
+        });
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+        document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
     </script>
 </body>
 </html>
