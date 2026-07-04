@@ -1,3 +1,6 @@
+Here is the complete HTML code for the carpentry website. The sticky social bar now stays visible at the bottom of the page and no longer has a close button.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -170,7 +173,7 @@
             font-weight: 300;
         }
 
-        /* Sticky Social Media Bar - FIXED */
+        /* Sticky Social Media Bar - FIXED - NO CLOSE BUTTON */
         .sticky-social-bar {
             position: fixed;
             bottom: 0;
@@ -246,28 +249,6 @@
         .sticky-social-icons a:hover {
             background-color: var(--secondary);
             transform: translateY(-3px);
-        }
-
-        .sticky-social-close {
-            background: none;
-            border: none;
-            color: var(--text);
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: var(--transition);
-            padding: 5px;
-            border-radius: 50%;
-            width: 34px;
-            height: 34px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: 8px;
-        }
-
-        .sticky-social-close:hover {
-            background-color: rgba(0, 0, 0, 0.06);
-            color: var(--primary);
         }
 
         /* Header */
@@ -1104,7 +1085,7 @@
 </head>
 
 <body>
-    <!-- Sticky Social Media Bar - FIXED -->
+    <!-- Sticky Social Media Bar - NO CLOSE BUTTON -->
     <div class="sticky-social-bar" id="stickySocialBar">
         <div class="sticky-social-container">
             <div class="sticky-social-text">
@@ -1122,9 +1103,6 @@
                     <i class="fas fa-phone"></i>
                 </a>
             </div>
-            <button class="sticky-social-close" id="closeStickySocial" title="Close">
-                <i class="fas fa-times"></i>
-            </button>
         </div>
     </div>
 
@@ -1482,14 +1460,13 @@
             }
         });
 
-        // ===== STICKY SOCIAL BAR - FIXED =====
+        // ===== STICKY SOCIAL BAR - FIXED - NO CLOSE BUTTON =====
         const stickyBar = document.getElementById('stickySocialBar');
-        const closeBtn = document.getElementById('closeStickySocial');
         let barVisible = false;
-        let hideTimeout = null;
+        let isAtBottom = false;
 
         function showSocialBar() {
-            if (!barVisible) {
+            if (!barVisible && !isAtBottom) {
                 stickyBar.classList.remove('hidden');
                 stickyBar.classList.add('visible');
                 barVisible = true;
@@ -1504,68 +1481,37 @@
             }
         }
 
-        // Show after 3 seconds on load
-        setTimeout(showSocialBar, 3000);
+        // Show after 2 seconds on load
+        setTimeout(showSocialBar, 2000);
 
-        // Close button
-        closeBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            hideSocialBar();
-            // Reset timer so it doesn't reappear immediately
-            if (hideTimeout) clearTimeout(hideTimeout);
-            // Show again after 10 seconds if user hasn't scrolled to footer
-            hideTimeout = setTimeout(() => {
-                // Only show if not at footer
-                const footerRect = document.querySelector('footer').getBoundingClientRect();
-                if (footerRect.top > window.innerHeight) {
-                    showSocialBar();
-                }
-            }, 10000);
-        });
-
-        // Hide when footer is visible
-        const footerObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    hideSocialBar();
-                    if (hideTimeout) clearTimeout(hideTimeout);
-                } else {
-                    // Only show if it was previously hidden by footer and user scrolls up
-                    // but don't auto-show if user closed it manually
-                    if (!barVisible && !stickyBar.classList.contains('hidden')) {
-                        // This means it was hidden by footer, show again when footer out of view
-                        setTimeout(() => {
-                            const footerRect = document.querySelector('footer').getBoundingClientRect();
-                            if (footerRect.top > window.innerHeight && !barVisible) {
-                                showSocialBar();
-                            }
-                        }, 500);
-                    }
-                }
-            });
-        }, { threshold: 0.1 });
-        footerObserver.observe(document.querySelector('footer'));
-
-        // Also hide when at bottom of page
-        window.addEventListener('scroll', function() {
+        // Check if at bottom of page
+        function checkBottom() {
             const scrollY = window.scrollY;
             const windowHeight = window.innerHeight;
             const documentHeight = document.documentElement.scrollHeight;
+            const atBottom = scrollY + windowHeight >= documentHeight - 50;
 
-            // If near bottom (within 100px), hide
-            if (scrollY + windowHeight >= documentHeight - 100) {
+            if (atBottom) {
+                isAtBottom = true;
                 hideSocialBar();
-            } else if (!barVisible && !stickyBar.classList.contains('hidden')) {
-                // Only show again if we scroll up from bottom
-                // and if user didn't close it manually
-                const footerRect = document.querySelector('footer').getBoundingClientRect();
-                if (footerRect.top > windowHeight) {
-                    // But only if it wasn't manually closed (check if it has 'hidden' class)
-                    if (!stickyBar.classList.contains('hidden')) {
-                        showSocialBar();
-                    }
+            } else {
+                isAtBottom = false;
+                // Only show if not at bottom and bar is hidden
+                if (!barVisible && stickyBar.classList.contains('hidden')) {
+                    showSocialBar();
                 }
             }
+        }
+
+        // Check on scroll
+        window.addEventListener('scroll', checkBottom);
+
+        // Also check on resize
+        window.addEventListener('resize', checkBottom);
+
+        // Check after load
+        window.addEventListener('load', function() {
+            setTimeout(checkBottom, 300);
         });
 
         // Scroll indicator
@@ -1750,3 +1696,4 @@
     </script>
 </body>
 </html>
+```
