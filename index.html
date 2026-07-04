@@ -480,6 +480,8 @@
         /* Carousel */
         .carousel {
             position: relative;
+            overflow: hidden;
+            padding: 0 0 20px 0;
         }
 
         .carousel-track {
@@ -492,6 +494,7 @@
             padding: 6px 6px 10px;
             margin: 0 -6px;
             scrollbar-width: none;
+            -ms-overflow-style: none;
         }
         .carousel-track::-webkit-scrollbar {
             display: none;
@@ -499,7 +502,7 @@
 
         .carousel-arrow {
             position: absolute;
-            top: 40%;
+            top: 45%;
             transform: translateY(-50%);
             width: 48px;
             height: 48px;
@@ -513,7 +516,13 @@
             cursor: pointer;
             box-shadow: var(--shadow);
             transition: var(--transition);
-            z-index: 3;
+            z-index: 5;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .carousel-arrow.visible {
+            opacity: 1;
+            pointer-events: auto;
         }
         .carousel-arrow:hover {
             background: var(--primary);
@@ -521,10 +530,10 @@
             border-color: var(--primary);
         }
         .carousel-arrow.prev {
-            left: -22px;
+            left: 12px;
         }
         .carousel-arrow.next {
-            right: -22px;
+            right: 12px;
         }
         .carousel-arrow[hidden] {
             display: none;
@@ -534,7 +543,7 @@
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-top: 26px;
+            margin-top: 20px;
         }
         .carousel-dots:empty {
             display: none;
@@ -1135,7 +1144,7 @@
                 <p>We offer a comprehensive range of bespoke joinery services tailored to your specific needs.</p>
             </div>
             <div class="carousel">
-                <button class="carousel-arrow prev" data-prev hidden aria-label="Previous service"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-arrow prev" data-prev aria-label="Previous service"><i class="fas fa-chevron-left"></i></button>
                 <div class="services-grid carousel-track" data-track>
                     <div class="service-card reveal">
                         <div class="service-img">
@@ -1165,7 +1174,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="carousel-arrow next" data-next hidden aria-label="Next service"><i class="fas fa-chevron-right"></i></button>
+                <button class="carousel-arrow next" data-next aria-label="Next service"><i class="fas fa-chevron-right"></i></button>
             </div>
             <div class="carousel-dots" data-dots></div>
         </div>
@@ -1179,7 +1188,7 @@
                 <p>Explore our latest projects showcasing our craftsmanship and attention to detail.</p>
             </div>
             <div class="carousel">
-                <button class="carousel-arrow prev" data-prev hidden aria-label="Previous project"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-arrow prev" data-prev aria-label="Previous project"><i class="fas fa-chevron-left"></i></button>
                 <div class="portfolio-grid carousel-track" data-track>
                     <div class="portfolio-item reveal">
                         <img src="IMG_8958.jpeg" alt="Bespoke Media Wall with LED Shelving">
@@ -1230,7 +1239,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="carousel-arrow next" data-next hidden aria-label="Next project"><i class="fas fa-chevron-right"></i></button>
+                <button class="carousel-arrow next" data-next aria-label="Next project"><i class="fas fa-chevron-right"></i></button>
             </div>
             <div class="carousel-dots" data-dots></div>
             <div class="portfolio-btn">
@@ -1429,7 +1438,7 @@
         });
     </script>
 
-    <!-- Scroll reveal: isolated so a problem here (or elsewhere) can't hide page content -->
+    <!-- Scroll reveal -->
     <script>
         try {
             const revealEls = document.querySelectorAll('.reveal');
@@ -1451,19 +1460,14 @@
                     });
                 }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
 
-                // Only now switch content to the hidden/animate-in state, right before observing it
                 document.documentElement.classList.add('reveal-ready');
                 revealEls.forEach((el) => revealObserver.observe(el));
-
-                // Safety net: if anything is somehow missed, force it visible after 3s
                 setTimeout(() => revealEls.forEach((el) => el.classList.add('active')), 3000);
             }
-        } catch (err) {
-            // If anything goes wrong, do nothing — content stays visible by default
-        }
+        } catch (err) {}
     </script>
 
-    <!-- Carousels: fixed implementation -->
+    <!-- Carousels: smooth, swipeable, with dots and arrows -->
     <script>
         function initCarousel(carousel) {
             const track = carousel.querySelector('[data-track]');
@@ -1476,14 +1480,15 @@
             if (!slides.length) return;
 
             // If all slides fit, hide arrows and dots
-            if (track.scrollWidth <= track.clientWidth + 4) {
-                if (prevBtn) prevBtn.hidden = true;
-                if (nextBtn) nextBtn.hidden = true;
+            if (track.scrollWidth <= track.clientWidth + 10) {
+                if (prevBtn) prevBtn.style.display = 'none';
+                if (nextBtn) nextBtn.style.display = 'none';
                 if (dotsWrap) dotsWrap.innerHTML = '';
                 return;
             }
 
             let currentIndex = 0;
+            let isAnimating = false;
 
             function getVisibleIndex() {
                 const trackRect = track.getBoundingClientRect();
@@ -1502,16 +1507,20 @@
             }
 
             function scrollToSlide(i, smooth) {
+                if (isAnimating) return;
+                isAnimating = true;
                 const slide = slides[i];
                 const trackRect = track.getBoundingClientRect();
                 const slideRect = slide.getBoundingClientRect();
                 const delta = slideRect.left - trackRect.left;
                 track.scrollTo({ left: track.scrollLeft + delta, behavior: smooth ? 'smooth' : 'auto' });
+                setTimeout(() => { isAnimating = false; }, 400);
             }
 
             function updateDots() {
                 if (!dotsWrap) return;
-                dotsWrap.querySelectorAll('button').forEach((b, i) => b.classList.toggle('active', i === currentIndex));
+                const dots = dotsWrap.querySelectorAll('button');
+                dots.forEach((b, i) => b.classList.toggle('active', i === currentIndex));
             }
 
             function goTo(i) {
@@ -1534,16 +1543,12 @@
                     dot.addEventListener('click', () => goTo(i));
                     dotsWrap.appendChild(dot);
                 });
-                // Set initial active dot after a short delay to let scroll settle
-                requestAnimationFrame(() => {
+                // Set initial active dot
+                setTimeout(() => {
                     currentIndex = getVisibleIndex();
                     updateDots();
-                });
+                }, 100);
             }
-
-            // Show arrows
-            if (prevBtn) { prevBtn.hidden = false; }
-            if (nextBtn) { nextBtn.hidden = false; }
 
             // Arrow click handlers
             if (prevBtn) {
@@ -1559,7 +1564,33 @@
                 });
             }
 
+            // Show arrows on hover
+            carousel.addEventListener('mouseenter', () => {
+                if (prevBtn) prevBtn.classList.add('visible');
+                if (nextBtn) nextBtn.classList.add('visible');
+            });
+            carousel.addEventListener('mouseleave', () => {
+                if (prevBtn) prevBtn.classList.remove('visible');
+                if (nextBtn) nextBtn.classList.remove('visible');
+            });
+
+            // On touch devices, always show arrows (they'll be small)
+            if ('ontouchstart' in window) {
+                if (prevBtn) prevBtn.classList.add('visible');
+                if (nextBtn) nextBtn.classList.add('visible');
+            }
+
             // Update dots on scroll
+            let scrollTimeout;
+            track.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    currentIndex = getVisibleIndex();
+                    updateDots();
+                }, 100);
+            }, { passive: true });
+
+            // Also update dots when slides change via intersection
             const sync = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
@@ -1570,20 +1601,10 @@
                         }
                     }
                 });
-            }, { root: track, threshold: 0.6 });
+            }, { root: track, threshold: 0.5 });
             slides.forEach((s) => sync.observe(s));
 
-            // Also update on scroll end (for better UX)
-            let scrollTimeout;
-            track.addEventListener('scroll', () => {
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(() => {
-                    currentIndex = getVisibleIndex();
-                    updateDots();
-                }, 150);
-            }, { passive: true });
-
-            // Gentle autoplay; paused on hover/touch, skipped for reduced-motion preference
+            // Autoplay
             if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                 let timer = setInterval(() => goTo(currentIndex + 1), 6000);
                 const restart = () => { clearInterval(timer);
@@ -1597,10 +1618,10 @@
         // Initialize all carousels
         document.querySelectorAll('.carousel').forEach((carousel) => {
             try {
-                // Wait a tick to ensure layout is stable
+                // Wait for layout to settle
                 requestAnimationFrame(() => initCarousel(carousel));
             } catch (err) {
-                // Native scroll keeps working regardless
+                // Native scroll keeps working
             }
         });
     </script>
