@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head> 
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>203 Carpentry | Bespoke Joinery in Sussex</title>
@@ -278,15 +278,16 @@
 
         .hero-content { position: relative; z-index: 2; max-width: 900px; padding: 0 20px; }
 
-        /* Scroll reveal */
-        .reveal {
+        /* Scroll reveal — visible by default; only hidden once JS confirms setup succeeded.
+           Opacity-only by design, so it never competes with hover transforms elsewhere. */
+        .reveal { opacity: 1; }
+        html.reveal-ready .reveal {
             opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: opacity 0.6s ease-out;
         }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        html.reveal-ready .reveal.active { opacity: 1; }
         @media (prefers-reduced-motion: reduce) {
-            .reveal { opacity: 1; transform: none; transition: none; }
+            html.reveal-ready .reveal { opacity: 1; transition: none; }
         }
 
         .hero h1 {
@@ -610,9 +611,12 @@
                 <a href="https://www.instagram.com/203_carpentry/" target="_blank" title="Instagram">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                <a href="mailto:info@203carpentryjoinery.org" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="tel:07368860029" title="Call">
+                    <i class="fas fa-phone"></i>
+                </a>
             </div>
             <button class="sticky-social-close" id="closeStickySocial" title="Close">
                 <i class="fas fa-times"></i>
@@ -885,10 +889,9 @@
                     <img src="logo-white.png" alt="203 Carpentry &amp; Joinery" class="footer-logo">
                     <p>Creating exceptional custom woodwork in Sussex that transforms spaces.</p>
                     <div class="social-links">
-                        <a href="https://www.instagram.com/203_carpentry/" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="https://www.instagram.com/203_carpentry/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:info@203carpentryjoinery.org" title="Email"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:07368860029" title="Call"><i class="fas fa-phone"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
@@ -905,11 +908,11 @@
                 <div class="footer-column">
                     <h3>Our Services</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Built-in Cabinetry</a></li>
-                        <li><a href="#">Media Walls</a></li>
-                        <li><a href="#">Bathroom Panelling</a></li>
-                        <li><a href="#">Doors &amp; Windows</a></li>
-                        <li><a href="#">Bedroom Furniture</a></li>
+                        <li><a href="#services">Built-in Cabinetry</a></li>
+                        <li><a href="#services">Media Walls</a></li>
+                        <li><a href="#services">Bathroom Panelling</a></li>
+                        <li><a href="#services">Doors &amp; Windows</a></li>
+                        <li><a href="#services">Bedroom Furniture</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -977,26 +980,40 @@
         document.querySelector('.scroll-indicator').addEventListener('click', () => {
             window.scrollTo({ top: document.getElementById('about').offsetTop - 100, behavior: 'smooth' });
         });
+    </script>
 
-        // Scroll reveal: fade/rise elements into view, staggered within their group
-        const revealParents = new Map();
-        document.querySelectorAll('.reveal').forEach((el) => {
-            const parent = el.parentElement;
-            const index = revealParents.has(parent) ? revealParents.get(parent) : 0;
-            el.style.transitionDelay = `${Math.min(index * 0.12, 0.6)}s`;
-            revealParents.set(parent, index + 1);
-        });
+    <!-- Scroll reveal: isolated so a problem here (or elsewhere) can't hide page content -->
+    <script>
+        try {
+            const revealEls = document.querySelectorAll('.reveal');
+            if (revealEls.length && 'IntersectionObserver' in window) {
+                const revealParents = new Map();
+                revealEls.forEach((el) => {
+                    const parent = el.parentElement;
+                    const index = revealParents.has(parent) ? revealParents.get(parent) : 0;
+                    el.style.transitionDelay = `${Math.min(index * 0.1, 0.4)}s`;
+                    revealParents.set(parent, index + 1);
+                });
 
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
 
-        document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+                // Only now switch content to the hidden/animate-in state, right before observing it
+                document.documentElement.classList.add('reveal-ready');
+                revealEls.forEach((el) => revealObserver.observe(el));
+
+                // Safety net: if anything is somehow missed, force it visible after 3s
+                setTimeout(() => revealEls.forEach((el) => el.classList.add('active')), 3000);
+            }
+        } catch (err) {
+            // If anything goes wrong, do nothing — content stays visible by default
+        }
     </script>
 </body>
 </html>
